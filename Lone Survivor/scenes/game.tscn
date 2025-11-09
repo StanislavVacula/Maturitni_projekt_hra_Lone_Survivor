@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://djwijp855w0gx"]
+
+[ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://dw4jq6iduft82" path="res://assets/Jungel_Backround_LDS/Jungel-backround-preview.png" id="1_yqjtg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+
+[node name="Game" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-143, -80)
+scale = Vector2(2.24219, 0.914773)
+texture = ExtResource("1_yqjtg")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(0, 29)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_uwrxv")
