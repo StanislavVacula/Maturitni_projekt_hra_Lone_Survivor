@@ -1,104 +1,87 @@
-# Maturitni_projekt_hra_Lone_Survivor
-Toto je oficiální repozitář maturitního projektu na OAUH - Stanislav Vacula, za cíl na maturitní projekt jsem si vybral vytvořit 2d akční hru.
+# 🎮 Lone Survivor – 2D akční hra
+**Autor:** Stanislav Vacula
 
-# 🎮 Návrh maturitního projektu – 2D akční hra
-
-## 1. Název projektu
-**Lone Survivor**
+Tento projekt je **maturitní prací** zaměřenou na **vývoj 2D akční hry** v herním enginu **Godot 4.4**. Cílem práce je vytvořit hratelný prototyp, který propojuje herní design, programování a animaci do uceleného systému a představuje komplexní ukázku vývoje 2D herního projektu.
 
 ---
 
-## 2. Scénář a herní koncept
-
-Hra **Lone Survivor** se odehrává v pixel-artovém světě inspirovaném vojenským prostředím.  
-Hráč se ujímá role vojáka, který jako jediný přežil pád vojenského vrtulníku za nepřátelskými liniemi.  
-Ocítá se v neznámém území plném ozbrojených nepřátel, pastí a překážek. Jeho cílem je **přežít**, **najít cestu ven** a **dostat se zpět k vlastní jednotce**.
-
-Každý level představuje jinou část nepřátelského území – od džungle až po vesnici.  
-Hráč musí využívat prostředí, šetřit municí a postupně nacházet zbraně a vybavení.  
-Cílem hry je **kombinace akce, strategie a napětí z přežití**.
+## 🎯 Cíle projektu
+Hlavním cílem této práce je **navrhnout a implementovat 2D akční survival hru**, která kombinuje **akci, strategii a prvky přežití**.  
+Hráč se ujímá role vojáka, jenž po pádu vrtulníku musí přežít v nepřátelském území plném pastí a ozbrojených protivníků.
 
 ---
 
-## 3. Herní mechaniky
-
-- **Pohyb:** chůze, běh, skoky a krytí.  
-- **Útoky:** střelné zbraně (pistole) a boj zblízka.  
-- **Interakce:** sbírání předmětů, posouvání krabic, otevírání dveří.  
-- **Systém zdraví:** hráč má počet životů zobrazený pomocí ukazatele.  
-- **Checkpointy:** po smrti se hráč vrací na poslední uložený bod.
-
----
-
-## 4. Počet a struktura levelů
-
-| Level | Název             | Hlavní prvky                             |
-|:------:|------------------|------------------------------------------|
-| 1 | Džungle | Základní pohyb, první nepřátelé. |
-| 2 | Džungle | První střelba, zbraně a krytí. |
-| 3 | Zničená vesnice | Omezená munice, tichý pohyb. |
-| 4 | Zničená vesnice | Puzzle a těžké souboje. |
-| 5 | Tábor | Boss fight, kombinace všech mechanik. |
+## 🕹️ Herní koncept
+- **Název hry:** *Lone Survivor*  
+- **Prostředí:** vojenský pixel-art svět  
+- **Cíl hry:** přežít, dostat se zpět k vlastní jednotce  
+- **Progres:** hra je rozdělena do několika levelů s rostoucí obtížností  
+- **Levely zahrnují:** džungli, vesnici i nepřátelský tábor s finálním boss fightem  
 
 ---
 
-## 5. Zvyšování obtížnosti
-
-Obtížnost hry se bude **zvyšovat s každým levelem**.  
-Nepřátelé budou rychlejší, přesnější a vybaveni lepšími zbraněmi.  
-Hráč bude muset lépe plánovat své kroky a **šetřit střelivem**.
-
----
-
-## 6. Postavy a objekty
-
-### 🪖 Hlavní postava – Player (voják)
-Hráč ovládá vojáka, který přežil havárii vrtulníku.  
-Má omezené zdroje a musí se probojovat ven z nepřátelského území.  
-
-**Atributy:** zdraví, rychlost, zbraň, pozice.
+## ⚙️ Herní mechaniky
+- **Pohyb:** chůze, běh, skoky, krytí  
+- **Útoky:** střelné zbraně (pistole), boj zblízka  
+- **Interakce:** sbírání předmětů, posouvání krabic, otevírání dveří  
+- **Zdraví a checkpointy:** systém životů a ukládacích bodů  
 
 ---
 
-### 🔫 Nepřátelé – Enemy
-Nepřátelští vojáci různých typů, liší se rychlostí, přesností a počtem životů.
+## 🧍‍♂️ Postavy a objekty
+- **Player (voják):** hlavní postava s atributy zdraví, rychlosti a zbraně  
+- **Enemy (nepřátelé):** různé typy vojáků s odlišnými schopnostmi  
+- **Object (objekty):** krabice, zbraně, lékárničky – interaktivní prvky prostředí  
 
 ---
 
-### 🧰 Objekty – Object
-Krabice, zbraně, lékárničky.  
-Hráč s nimi může interagovat a využívat je strategicky.
+## 🎨 Grafika a styl
+- Pixel-art vizuál inspirovaný vojenským prostředím  
+- Postavy a animace vytvořeny pomocí uzlu `AnimatedSprite2D`  
+- Důraz na přehlednost a atmosféru prostředí  
 
 ---
 
-## 7. Grafika a vizuální styl
-
-Hra je vytvořena v **pixel-art stylu** s důrazem na vojenské prostředí.  
-Postavy a animace jsou realizovány pomocí uzlu **`AnimatedSprite2D`** v **Godotu**.
-
----
-
-## 8. Použitý framework
-
-Pro vývoj hry je zvolen **Godot Engine (verze 4.4)**.  
-Je vhodný pro 2D hry, má přehlednou strukturu scén, efektivní systém skriptování (**GDScript**)  
-a je zcela **open-source**.  
-Díky tomu umožňuje snadnou implementaci logiky, animací a fyziky.
+## 💻 Použité technologie
+| Oblast | Technologie | Účel |
+|--------|------------|------|
+| Herní engine | **Godot Engine 4.4** | Vývoj 2D hry a správa scén |
+| Jazyk | **GDScript** | Implementace herní logiky a interakcí |
+| Grafika | **Pixel-art** | Stylizace postav a prostředí |
+| Animace | **AnimatedSprite2D** | Realizace pohybu a akcí postav |
+| Fyzika | **Godot Physics2D** | Kolize, pohyb a interakce objektů |
 
 ---
 
-## 9. Diagram tříd
-
-Hlavní třídy a jejich atributy:
-
-- **Player:** zdraví, rychlost, zbraň, pozice  
-- **Enemy:** zdraví, rychlost, typ útoku  
-- **Object:** typ, interaktivita, pozice  
-- **Weapon:** typ, poškození, rychlost útoku
+## 🧩 Struktura hry
+| Level | Název | Hlavní prvky |
+|-------|-------|---------------|
+| 1 | Džungle | Základní pohyb, první nepřátelé |
+| 2 | Džungle II | Střelba, sběr zbraní, krytí |
+| 3 | Zničená vesnice | Tichý pohyb, omezená munice |
+| 4 | Vesnice II | Puzzle a náročnější souboje |
+| 5 | Tábor | Boss fight, kombinace všech mechanik |
 
 ---
 
-## 10. Shrnutí a přínos projektu
+## 🧠 Přínos projektu
+Projekt **Lone Survivor** demonstruje znalost tvorby herní logiky, animací, fyziky a strukturovaného programování.  
+Cílem je vytvořit funkční 2D hru, která dokládá pochopení principů herního designu, vývoje v enginu Godot a práce s vizuálními i interaktivními prvky.
 
-Cílem projektu je vytvořit **2D akční hru v Godotu**, která kombinuje herní logiku, animace a fyzikální systém.  
-Projekt demonstruje znalost **programování, tvorby scén a herních mechanik** a přináší ucelený koncept **survival akční hry**.
+---
+
+## 🛠️ Instalace a spuštění
+1. **Klonování repozitáře**  
+```bash
+git clone [URL_VAŠEHO_REPOZITÁŘE]
+cd Lone_Survivor
+
+**Otevření projektu v Godotu**  
+
+Spusťte Godot 4.4 a otevřete složku projektu.
+
+**Spuštění hry**  
+
+Otevřete hlavní scénu (Main.tscn) a klikněte na Play Scene.
+
+Hra se spustí a můžete testovat herní mechaniky a levely.
