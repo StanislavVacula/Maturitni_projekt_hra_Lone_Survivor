@@ -75,8 +75,9 @@ Cílem je vytvořit funkční 2D hru, která dokládá pochopení principů hern
 ```bash
 git clone [URL_VAŠEHO_REPOZITÁŘE]
 cd Lone_Survivor
+```
 
-**Otevření projektu v Godotu**  
+**Otevření projektu v Godotu**
 
 Spusťte Godot 4.4 a otevřete složku projektu.
 
