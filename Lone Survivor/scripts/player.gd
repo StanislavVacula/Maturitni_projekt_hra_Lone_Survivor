@@ -1,34 +1,34 @@
 extends CharacterBody2D
 
-const SPEED = 130
+const SPEED = 50
 const JUMP_VELOCITY = -300
 
 @onready var anim = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Gravitace
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
+	# Skok
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		anim.play("jump")  # 🎬 přehraj animaci skoku
+		anim.play("jump")
 
-	# Get the input direction and handle the movement/deceleration.
+	# Pohyb
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if direction != 0:
 		velocity.x = direction * SPEED
 		anim.flip_h = direction < 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = 0  # 👈 okamžité zastavení, žádné klouzání
 
 	move_and_slide()
 
-	# Animace podle stavu
+	# Animace
 	if not is_on_floor():
 		anim.play("jump")
-	elif direction:
+	elif direction != 0:
 		anim.play("walk")
 	else:
 		anim.play("idle")
