@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs8ylschsciqw"
-path="res://.godot/imported/Jungel Layer 4.png-989e9f2b13969db8065d09d07bc2b64d.ctex"
+uid="uid://dkvbh1idkys60"
+path="res://.godot/imported/Jungle_Canopy.png-f408f7b7bbada2af85982d2d5a01a51b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jungel_Backround_LDS/Jungel Layer 4.png"
-dest_files=["res://.godot/imported/Jungel Layer 4.png-989e9f2b13969db8065d09d07bc2b64d.ctex"]
+source_file="res://assets/Jungel_Backround_LDS/Jungle_Canopy.png"
+dest_files=["res://.godot/imported/Jungle_Canopy.png-f408f7b7bbada2af85982d2d5a01a51b.ctex"]
 
 [params]
 

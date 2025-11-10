@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnk6xm0vpiy3u"
-path="res://.godot/imported/Jungel Layer 2.png-23da21c3f0ecab0e5a7493b50079c2cc.ctex"
+uid="uid://cfeb0qpx2vx38"
+path="res://.godot/imported/Green Tile V1.1.png-25123f183886b9667db47a987e807598.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jungel_Backround_LDS/Jungel Layer 2.png"
-dest_files=["res://.godot/imported/Jungel Layer 2.png-23da21c3f0ecab0e5a7493b50079c2cc.ctex"]
+source_file="res://assets/Jungel_Backround_LDS/Green Tile V1.1.png"
+dest_files=["res://.godot/imported/Green Tile V1.1.png-25123f183886b9667db47a987e807598.ctex"]
 
 [params]
 
