@@ -73,7 +73,7 @@ Cílem je vytvořit funkční 2D hru, která dokládá pochopení principů hern
 ## 🛠️ Instalace a spuštění
 1. **Klonování repozitáře**  
 ```bash
-git clone [URL_VAŠEHO_REPOZITÁŘE]
+git clone https://github.com/StanislavVacula/Maturitni_projekt_hra_Lone_Survivor
 cd Lone_Survivor
 ```
 
