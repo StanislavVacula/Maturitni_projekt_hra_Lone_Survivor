@@ -17,11 +17,11 @@ func _physics_process(delta: float) -> void:
 
 	# Pohyb
 	var direction := Input.get_axis("ui_left", "ui_right")
+	velocity.x = direction * SPEED
+
+	# Otočení podle směru
 	if direction != 0:
-		velocity.x = direction * SPEED
 		anim.flip_h = direction < 0
-	else:
-		velocity.x = 0  # 👈 okamžité zastavení, žádné klouzání
 
 	move_and_slide()
 
