@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://djwijp855w0gx"]
+[gd_scene load_steps=10 format=3 uid="uid://djwijp855w0gx"]
 
 [ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://s1exvqsr4rtr" path="res://scenes/camera_2d.gd" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://dt7swubml11fe" path="res://assets/Jungel_Backround_LDS/Jungle.png" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dkvbh1idkys60" path="res://assets/Jungel_Backround_LDS/Jungle_Canopy.png" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://by5q2ufdlaqwn" path="res://assets/Jungel_Backround_LDS/jungle_background.png" id="5_iywne"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 friction = 1.5
@@ -316,21 +317,35 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 sources/1 = SubResource("TileSetAtlasSource_iywne")
 
 [node name="Game" type="Node2D"]
+position = Vector2(576, 324)
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(-6, 8)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(3, -11)
 zoom = Vector2(4, 4)
+process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 script = ExtResource("2_lnu2h")
-player = NodePath("Player")
-
-[node name="Player" parent="Camera2D" instance=ExtResource("1_uwrxv")]
-position = Vector2(0, 29)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 42)
 
 [node name="TileMap" type="TileMap" parent="StaticBody2D"]
+position = Vector2(3, -11)
 tile_set = SubResource("TileSet_lbhrr")
 format = 2
+layer_0/name = "Mid"
 layer_0/tile_data = PackedInt32Array(196606, 393216, 1, 196607, 393216, 1, 131072, 393216, 1, 262140, 393216, 1, 262141, 393216, 1, 262142, 393216, 1, 262143, 393216, 1, 196608, 393216, 1, 262139, 393216, 1, 327675, 393216, 1, 327676, 393216, 1, 327677, 393216, 1, 327678, 393216, 1, 327679, 393216, 1, 262138, 393216, 1, 327674, 393216, 1, 327673, 393216, 1, 262137, 393216, 1, 262144, 393216, 1, 262145, 393216, 1, 196609, 393216, 1, 196610, 393216, 1, 262146, 393216, 1, 262147, 393216, 1, 262148, 393216, 1, 262149, 393216, 1, 196613, 393216, 1, 131077, 393216, 1, 131076, 393216, 1, 196612, 393216, 1, 196611, 393216, 1, 131075, 393216, 1, 131074, 393216, 1, 131073, 393216, 1, 196605, 393216, 1, 196604, 393216, 1, 196603, 393216, 1, 196602, 393216, 1, 196601, 393216, 1, 131065, 262144, 0, 131066, 262144, 0, 131067, 262144, 0, 131068, 262144, 0, 131069, 262144, 0, 131070, 262144, 0, 131071, 262144, 0, 65536, 262144, 0, 65537, 262144, 0, 65538, 262144, 0, 65539, 262144, 0, 65540, 262144, 0, 65541, 262144, 0)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="StaticBody2D"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="StaticBody2D/ParallaxBackground"]
+position = Vector2(576, 324)
+motion_mirroring = Vector2(278, 177)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2(4.00024, -5.99994)
+scale = Vector2(0.1495, 0.096162)
+texture = ExtResource("5_iywne")
