@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://duwsmjvwd6pk8"]
+[gd_scene load_steps=13 format=3 uid="uid://duwsmjvwd6pk8"]
 
 [ext_resource type="Texture2D" uid="uid://w5ye507e4866" path="res://assets/chars.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://djfmq3e8bcmuh" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://b3v08r2pukoh8" path="res://sounds/jump.wav" id="3_srqg1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
@@ -83,10 +84,18 @@ slide_on_ceiling = false
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.75, -5.75)
+scale = Vector2(2.21875, 2.21875)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"jump"
 frame = 1
 frame_progress = 0.695628
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-3, 8, 1, 8, 4, 4, 5, 0, 5, -5, 3, -7, -3, -7, -5, -5, -5, -1, -5, 4)
+position = Vector2(-5, -6.6984)
+scale = Vector2(2.125, 1.87791)
+polygon = PackedVector2Array(-4.65116, 9.97369, 3.16279, 9.97369, 4.27907, 4.07895, 5, 0, 5, -5, 3, -7, -3, -7, -5, -5, -5, -1, -5, 4)
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-4, -5)
+stream = ExtResource("3_srqg1")
