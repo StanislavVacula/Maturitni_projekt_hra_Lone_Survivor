@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://djwijp855w0gx"]
+[gd_scene load_steps=8 format=3 uid="uid://djwijp855w0gx"]
 
+[ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://s1exvqsr4rtr" path="res://scripts/camera_2d.gd" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://qo5e85y6270u" path="res://assets/Jungel_Backround_LDS/Tileset.png" id="3_u23gu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
@@ -968,6 +969,7 @@ sources/3 = SubResource("TileSetAtlasSource_rtsk3")
 
 [node name="Game" type="Node2D"]
 position = Vector2(576, 324)
+script = ExtResource("1_lbhrr")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(-522, 236)

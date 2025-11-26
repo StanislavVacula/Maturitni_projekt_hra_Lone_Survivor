@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqrlbiqjnuo7c"]
 
-[ext_resource type="Script" path="res://scripts/health_bar.gd" id="1_1bvlm"]
-[ext_resource type="Script" path="res://timer.gd" id="2_h7unk"]
+[ext_resource type="Script" uid="uid://88uih5xw55qn" path="res://scripts/health_bar.gd" id="1_1bvlm"]
+[ext_resource type="Script" uid="uid://idph2xs7d5hk" path="res://scripts/timer.gd" id="2_h7unk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwqyq"]
 bg_color = Color(0.913725, 0, 0.0156863, 1)

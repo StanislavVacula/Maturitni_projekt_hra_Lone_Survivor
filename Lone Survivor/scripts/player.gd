@@ -17,11 +17,11 @@ func _physics_process(delta: float) -> void:
 		anim.play("jump")
 		jumpSound.play()
 
-	# Pohyb
+	# Pohyb vodorovně
 	var direction := Input.get_axis("ui_left", "ui_right")
 	velocity.x = direction * SPEED
 
-	# Otočení podle směru
+	# Otočení animace podle směru pohybu
 	if direction != 0:
 		anim.flip_h = direction < 0
 
