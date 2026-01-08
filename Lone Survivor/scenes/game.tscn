@@ -968,7 +968,7 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_lbhrr")
 sources/3 = SubResource("TileSetAtlasSource_rtsk3")
 
 [node name="Game" type="Node2D"]
-position = Vector2(576, 324)
+position = Vector2(577, 324)
 script = ExtResource("1_lbhrr")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
