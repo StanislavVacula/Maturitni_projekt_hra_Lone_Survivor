@@ -79,7 +79,7 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 slide_on_ceiling = false
 script = ExtResource("1_g2els")
 
