@@ -19,17 +19,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
-size = Vector2(21, 28)
+size = Vector2(33, 44.5)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.875, 1.875)
+position = Vector2(-2.38419e-07, 2.38419e-07)
+scale = Vector2(3.0625, 3.0625)
 sprite_frames = SubResource("SpriteFrames_md0e3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 1)
+position = Vector2(1.5, 1.75)
 shape = SubResource("RectangleShape2D_md0e3")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

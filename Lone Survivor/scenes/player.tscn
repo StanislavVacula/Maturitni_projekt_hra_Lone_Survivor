@@ -84,16 +84,16 @@ slide_on_ceiling = false
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-5.75, -5.75)
-scale = Vector2(2.21875, 2.21875)
+position = Vector2(-3, -4)
+scale = Vector2(3.34375, 3.34375)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"walk"
 frame = 1
 frame_progress = 0.173625
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-5, -6.6984)
-scale = Vector2(2.125, 1.87791)
+position = Vector2(-3, -4)
+scale = Vector2(2.98438, 2.63736)
 polygon = PackedVector2Array(-4.65116, 9.97369, 3.16279, 9.97369, 4.27907, 4.07895, 5, 0, 5, -5, 3, -7, -3, -7, -5, -5, -5, -1, -5, 4)
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]

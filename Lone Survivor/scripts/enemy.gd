@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # ====== KONSTANTY ======
-const SPEED = 50.0
+const SPEED = 0
 const CHANGE_TIME = 2.0
 const SHOOT_COOLDOWN = 0.6
 const RAY_LENGTH = 300
