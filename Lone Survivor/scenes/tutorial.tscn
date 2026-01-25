@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://djwijp855w0gx"]
+[gd_scene load_steps=11 format=3 uid="uid://djwijp855w0gx"]
 
 [ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_cq4me"]
 [ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="2_6yjpi"]
 [ext_resource type="Script" uid="uid://s1exvqsr4rtr" path="res://scripts/camera_2d.gd" id="3_gbqnl"]
 [ext_resource type="Texture2D" uid="uid://dnjm0hp680fle" path="res://assets/TileSet/Nature_environment_01.png" id="4_ckvwl"]
 [ext_resource type="PackedScene" uid="uid://chkus4xclycai" path="res://scenes/enemy.tscn" id="5_nlqja"]
+[ext_resource type="Script" uid="uid://cnj88tryrnxu4" path="res://tutorial_manager.gd" id="6_6yjpi"]
+[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="6_gbqnl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 friction = 1.5
@@ -446,7 +448,7 @@ position = Vector2(3, -11)
 tile_set = SubResource("TileSet_lbhrr")
 format = 2
 layer_0/name = "Mid"
-layer_0/tile_data = PackedInt32Array(589806, 393216, 6, 589807, 0, 3, 589808, 0, 3, 589809, 0, 3, 589810, 0, 3, 589811, 0, 3, 589812, 0, 3, 589813, 0, 3, 589814, 0, 3, 589815, 0, 3, 589816, 0, 3, 589817, 0, 3, 589818, 1114112, 6, 655342, 393216, 7, 655343, 65536, 8, 655344, 131072, 8, 655345, 0, 8, 655346, 65536, 8, 655347, 131072, 8, 655348, 65536, 8, 655349, 65536, 8, 655350, 65536, 8, 655351, 262144, 8, 655352, 0, 8, 655353, 65536, 8, 655354, 1114112, 7, 720878, 393216, 7, 720890, 1114112, 7, 720879, 1048576, 4, 720880, 1048576, 4, 720881, 1048576, 4, 720882, 1048576, 4, 720883, 1048576, 4, 720884, 1048576, 4, 720885, 1048576, 4, 720886, 1048576, 4, 720887, 1048576, 4, 720888, 1048576, 4, 720889, 1048576, 4, 786414, 393216, 7, 786415, 1048576, 5, 786416, 1048576, 5, 786417, 1048576, 5, 786418, 1048576, 5, 786419, 1048576, 5, 786420, 1048576, 5, 786421, 1048576, 5, 786422, 1048576, 5, 786423, 1048576, 5, 786424, 1048576, 5, 786425, 1048576, 5, 786426, 1114112, 7)
+layer_0/tile_data = PackedInt32Array(589806, 589824, 6, 589807, 786432, 6, 589808, 786432, 6, 589809, 786432, 6, 589810, 786432, 6, 589811, 786432, 6, 589812, 786432, 6, 589813, 786432, 6, 589814, 786432, 6, 589815, 786432, 6, 589816, 786432, 6, 589817, 786432, 6, 589818, 1114112, 6, 655342, 393216, 7, 655343, 786432, 7, 655344, 786432, 7, 655345, 786432, 7, 655346, 786432, 7, 655347, 786432, 7, 655348, 786432, 7, 655349, 786432, 7, 655350, 786432, 7, 655351, 786432, 7, 655352, 786432, 7, 655353, 786432, 7, 655354, 1114112, 7, 720878, 393216, 7, 720890, 1114112, 7, 720879, 720896, 7, 720880, 720896, 7, 720881, 720896, 7, 720882, 720896, 7, 720883, 720896, 7, 720884, 720896, 7, 720885, 720896, 7, 720886, 1048576, 4, 720887, 720896, 7, 720888, 720896, 7, 720889, 720896, 7, 786414, 393216, 7, 786415, 720896, 8, 786416, 720896, 8, 786417, 720896, 8, 786418, 720896, 8, 786419, 720896, 8, 786420, 720896, 8, 786421, 720896, 8, 786422, 720896, 8, 786423, 720896, 8, 786424, 720896, 8, 786425, 720896, 8, 786426, 1114112, 7)
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -461,3 +463,40 @@ slide_on_ceiling = false
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(194, 531)
 scale = Vector2(0.190586, 0.190586)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TutorialUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialText" type="Label" parent="CanvasLayer/TutorialUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_gbqnl")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TutorialUI/TutorialText"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="TutorialManager" type="Node" parent="."]
+script = ExtResource("6_6yjpi")
