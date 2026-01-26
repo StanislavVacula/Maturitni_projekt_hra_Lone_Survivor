@@ -18,11 +18,6 @@ func _ready():
 		push_error("TutorialManager: Player nebyl nalezen!")
 		return
 
-	if label == null:
-		push_error("TutorialManager: TutorialText nebyl nalezen!")
-		return
-
-	get_tree().paused = true
 	update_text()
 
 func _process(delta):
@@ -35,6 +30,7 @@ func _process(delta):
 func update_text():
 	match step:
 		TutorialStep.MOVE:
+			label.visible = true
 			label.text = "Použij ← → pro pohyb"
 		TutorialStep.JUMP:
 			label.text = "Stiskni SPACE pro skok"
@@ -42,17 +38,15 @@ func update_text():
 			label.text = "Super! Jsi připraven 👍"
 
 func check_move():
-	# když se hráč pohne doleva nebo doprava
+	# hráč se skutečně pohybuje
 	if abs(player.velocity.x) > 0:
 		step = TutorialStep.JUMP
 		update_text()
 
 func check_jump():
-	# když hráč skočí
 	if not player.is_on_floor():
 		step = TutorialStep.DONE
 		update_text()
 
 		await get_tree().create_timer(1.0).timeout
-		get_tree().paused = false
 		label.visible = false
