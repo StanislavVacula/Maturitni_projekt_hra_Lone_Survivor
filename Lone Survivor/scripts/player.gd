@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 80
-const JUMP_VELOCITY = -150
+const JUMP_VELOCITY = -300
 
 var input_enabled := true
 
