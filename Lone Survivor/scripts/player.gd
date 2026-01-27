@@ -1,15 +1,14 @@
 extends CharacterBody2D
 
-const SPEED = 80
-const JUMP_VELOCITY = -300
+const SPEED := 80
+const JUMP_VELOCITY := -300
 
 var input_enabled := true
 
-@onready var anim = $AnimatedSprite2D
-@onready var jumpSound = $JumpSound
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var jumpSound: AudioStreamPlayer2D = $JumpSound
 
 func _physics_process(delta: float) -> void:
-	# Gravitace
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -19,14 +18,13 @@ func _physics_process(delta: float) -> void:
 		anim.play("jump")
 		jumpSound.play()
 
-	# Pohyb vodorovně
+	# Pohyb
 	var direction := 0.0
 	if input_enabled:
 		direction = Input.get_axis("ui_left", "ui_right")
 
 	velocity.x = direction * SPEED
 
-	# Otočení animace podle směru pohybu
 	if direction != 0:
 		anim.flip_h = direction < 0
 

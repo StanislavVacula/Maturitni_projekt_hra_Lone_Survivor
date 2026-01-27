@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://djwijp855w0gx"]
+[gd_scene load_steps=16 format=3 uid="uid://djwijp855w0gx"]
 
 [ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_cq4me"]
+[ext_resource type="Script" uid="uid://dwccod64bad2g" path="res://scripts/death_menu.gd" id="2_0epgs"]
 [ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="2_6yjpi"]
 [ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="2_ckvwl"]
 [ext_resource type="Script" uid="uid://s1exvqsr4rtr" path="res://scripts/camera_2d.gd" id="3_gbqnl"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://chkus4xclycai" path="res://scenes/enemy.tscn" id="5_nlqja"]
 [ext_resource type="Script" uid="uid://cnj88tryrnxu4" path="res://tutorial_manager.gd" id="6_6yjpi"]
 [ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="6_gbqnl"]
+[ext_resource type="Texture2D" uid="uid://ciyeib2wemx5o" path="res://assets/TileSet/Nature_props_01.png" id="6_nlqja"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 friction = 1.5
@@ -427,9 +429,111 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_lbhrr")
 sources/0 = SubResource("TileSetAtlasSource_p57ef")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nlqja"]
+texture = ExtResource("6_nlqja")
+1:1/size_in_atlas = Vector2i(3, 2)
+1:1/0 = 0
+1:4/size_in_atlas = Vector2i(3, 1)
+1:4/0 = 0
+4:4/0 = 0
+6:4/size_in_atlas = Vector2i(3, 1)
+6:4/0 = 0
+9:4/size_in_atlas = Vector2i(2, 1)
+9:4/0 = 0
+11:2/size_in_atlas = Vector2i(2, 3)
+11:2/0 = 0
+13:1/size_in_atlas = Vector2i(4, 4)
+13:1/0 = 0
+17:2/size_in_atlas = Vector2i(3, 3)
+17:2/0 = 0
+20:2/size_in_atlas = Vector2i(3, 3)
+20:2/0 = 0
+23:2/size_in_atlas = Vector2i(3, 3)
+23:2/0 = 0
+30:3/size_in_atlas = Vector2i(3, 2)
+30:3/0 = 0
+12:6/size_in_atlas = Vector2i(3, 3)
+12:6/0 = 0
+15:8/size_in_atlas = Vector2i(2, 1)
+15:8/0 = 0
+17:6/size_in_atlas = Vector2i(4, 3)
+17:6/0 = 0
+22:7/size_in_atlas = Vector2i(3, 2)
+22:7/0 = 0
+25:7/size_in_atlas = Vector2i(2, 2)
+25:7/0 = 0
+28:8/size_in_atlas = Vector2i(2, 1)
+28:8/0 = 0
+30:7/size_in_atlas = Vector2i(2, 2)
+30:7/0 = 0
+32:7/size_in_atlas = Vector2i(4, 2)
+32:7/0 = 0
+1:15/size_in_atlas = Vector2i(3, 2)
+1:15/0 = 0
+4:14/size_in_atlas = Vector2i(3, 4)
+4:14/0 = 0
+25:12/size_in_atlas = Vector2i(4, 2)
+25:12/0 = 0
+4:6/size_in_atlas = Vector2i(2, 3)
+4:6/0 = 0
+6:7/size_in_atlas = Vector2i(3, 2)
+6:7/0 = 0
+9:6/size_in_atlas = Vector2i(3, 3)
+9:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0epgs"]
+sources/0 = SubResource("TileSetAtlasSource_nlqja")
+
 [node name="Tutorial" type="Node2D"]
 position = Vector2(577, 324)
 script = ExtResource("1_cq4me")
+
+[node name="Player" parent="." instance=ExtResource("2_6yjpi")]
+position = Vector2(-545, 222)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(111, -45)
+zoom = Vector2(2, 1.867)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+script = ExtResource("3_gbqnl")
+
+[node name="TutorialManager" type="Node" parent="."]
+script = ExtResource("6_6yjpi")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="DeathMenu" type="Control" parent="CanvasLayer2"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0epgs")
+
+[node name="Panel" type="Panel" parent="CanvasLayer2/DeathMenu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/DeathMenu/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 47.0
+alignment = 1
+
+[node name="DeathText" type="Label" parent="CanvasLayer2/DeathMenu/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="CanvasLayer2/DeathMenu/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="CanvasLayer2/DeathMenu/Panel/VBoxContainer"]
+layout_mode = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
@@ -444,25 +548,22 @@ position = Vector2(209, 342)
 scale = Vector2(0.456556, 0.357422)
 texture = ExtResource("2_ckvwl")
 
-[node name="Player" parent="." instance=ExtResource("2_6yjpi")]
-position = Vector2(-545, 222)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(111, -45)
-zoom = Vector2(2, 1.867)
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-script = ExtResource("3_gbqnl")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="TileMap" type="TileMap" parent="StaticBody2D"]
+[node name="TileMap_ground" type="TileMap" parent="StaticBody2D"]
 position = Vector2(3, -11)
 tile_set = SubResource("TileSet_lbhrr")
 format = 2
 layer_0/name = "Mid"
-layer_0/tile_data = PackedInt32Array(589806, 589824, 6, 589807, 786432, 6, 589808, 786432, 6, 589809, 786432, 6, 589810, 786432, 6, 589811, 786432, 6, 589812, 786432, 6, 589813, 786432, 6, 589814, 786432, 6, 589815, 786432, 6, 589816, 786432, 6, 589817, 786432, 6, 589818, 1114112, 6, 655342, 393216, 7, 655343, 786432, 7, 655344, 786432, 7, 655345, 786432, 7, 655346, 786432, 7, 655347, 786432, 7, 655348, 786432, 7, 655349, 786432, 7, 655350, 786432, 7, 655351, 786432, 7, 655352, 786432, 7, 655353, 786432, 7, 655354, 1114112, 7, 720878, 393216, 7, 720890, 1114112, 7, 720879, 720896, 7, 720880, 720896, 7, 720881, 720896, 7, 720882, 720896, 7, 720883, 720896, 7, 720884, 720896, 7, 720885, 720896, 7, 720886, 1048576, 4, 720887, 720896, 7, 720888, 720896, 7, 720889, 720896, 7, 786414, 393216, 7, 786415, 720896, 8, 786416, 720896, 8, 786417, 720896, 8, 786418, 720896, 8, 786419, 720896, 8, 786420, 720896, 8, 786421, 720896, 8, 786422, 720896, 8, 786423, 720896, 8, 786424, 720896, 8, 786425, 720896, 8, 786426, 1114112, 7, 589821, 589824, 6, 589822, 524288, 6, 655357, 589824, 7, 720893, 589824, 8, 786429, 589824, 8, 786430, 720896, 8, 720894, 720896, 8, 655358, 720896, 8, 589823, 1114112, 6, 655359, 1114112, 7, 720895, 1114112, 7, 786431, 1114112, 7)
+layer_0/tile_data = PackedInt32Array(589806, 589824, 6, 589807, 786432, 6, 589808, 786432, 6, 589809, 786432, 6, 589810, 786432, 6, 589811, 786432, 6, 589812, 786432, 6, 589813, 786432, 6, 589814, 786432, 6, 589815, 786432, 6, 589816, 786432, 6, 589817, 786432, 6, 589818, 1114112, 6, 655342, 393216, 7, 655343, 786432, 7, 655344, 786432, 7, 655345, 786432, 7, 655346, 786432, 7, 655347, 786432, 7, 655348, 786432, 7, 655349, 786432, 7, 655350, 786432, 7, 655351, 786432, 7, 655352, 786432, 7, 655353, 786432, 7, 655354, 1114112, 7, 720878, 393216, 7, 720890, 1114112, 7, 720879, 720896, 7, 720880, 720896, 7, 720881, 720896, 7, 720882, 720896, 7, 720883, 720896, 7, 720884, 720896, 7, 720885, 720896, 7, 720886, 1048576, 4, 720887, 720896, 7, 720888, 720896, 7, 720889, 720896, 7, 786414, 393216, 7, 786415, 720896, 8, 786416, 720896, 8, 786417, 720896, 8, 786418, 720896, 8, 786419, 720896, 8, 786420, 720896, 8, 786421, 720896, 8, 786422, 720896, 8, 786423, 720896, 8, 786424, 720896, 8, 786425, 720896, 8, 786426, 1114112, 7, 589821, 589824, 6, 589822, 524288, 6, 655357, 589824, 7, 720893, 589824, 8, 786429, 589824, 8, 786430, 720896, 8, 720894, 720896, 8, 655358, 720896, 8, 589823, 1114112, 6, 655359, 1114112, 7, 720895, 1114112, 7, 786431, 1114112, 7, 851951, 720896, 8, 851952, 720896, 8, 851953, 720896, 8, 851954, 720896, 8, 851955, 720896, 8, 851956, 720896, 8, 851957, 720896, 8, 851958, 720896, 8, 851959, 720896, 8, 851960, 720896, 8, 851961, 720896, 8, 917487, 720896, 8, 917488, 720896, 8, 917489, 720896, 8, 917490, 720896, 8, 917491, 720896, 8, 917492, 720896, 8, 917493, 720896, 8, 917494, 720896, 8, 917495, 720896, 8, 917496, 720896, 8, 917497, 720896, 8, 851950, 393216, 7, 917486, 393216, 7, 983026, 720896, 8, 983027, 720896, 8, 983028, 720896, 8, 983029, 720896, 8, 983030, 720896, 8, 983031, 720896, 8, 983032, 720896, 8, 983033, 720896, 8, 983025, 720896, 8, 983024, 720896, 8, 983023, 720896, 8, 983022, 393216, 7, 851962, 1114112, 7, 917498, 1114112, 7, 983034, 1114112, 7, 851967, 1114112, 7, 917503, 1114112, 7, 983039, 1114112, 7, 851965, 393216, 7, 917501, 393216, 7, 983037, 393216, 7, 851966, 720896, 8, 917502, 720896, 8, 983038, 720896, 8)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="TileMap_decoration" type="TileMap" parent="StaticBody2D2"]
+z_index = -1
+tile_set = SubResource("TileSet_0epgs")
+format = 2
+layer_0/tile_data = PackedInt32Array(983009, 589824, 6, 983013, 786432, 6, 917491, 262144, 14, 983037, 65536, 15)
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -501,6 +602,3 @@ theme_override_fonts/font = ExtResource("6_gbqnl")
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TutorialManager" type="Node" parent="."]
-script = ExtResource("6_6yjpi")
