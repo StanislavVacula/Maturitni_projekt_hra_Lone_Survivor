@@ -14,7 +14,7 @@ var step := TutorialStep.ALIVE
 var player: CharacterBody2D
 
 @onready var label: Label = $"../CanvasLayer/TutorialUI/TutorialText"
-@onready var death_menu: Control = $"../CanvasLayer/DeathMenu"
+@onready var death_menu: Control = $"../CanvasLayer2/DeathMenu"
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")

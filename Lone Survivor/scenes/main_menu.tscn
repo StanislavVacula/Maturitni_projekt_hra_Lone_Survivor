@@ -18,6 +18,9 @@ text = "Lone Survivor"
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "PLAY
+"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "QUIT"

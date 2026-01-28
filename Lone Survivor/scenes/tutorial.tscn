@@ -508,32 +508,47 @@ script = ExtResource("6_6yjpi")
 process_mode = 2
 visible = false
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_0epgs")
 
 [node name="Panel" type="Panel" parent="CanvasLayer2/DeathMenu"]
+process_mode = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/DeathMenu/Panel"]
+process_mode = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 47.0
+mouse_filter = 0
 alignment = 1
 
 [node name="DeathText" type="Label" parent="CanvasLayer2/DeathMenu/Panel/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
+mouse_filter = 0
+text = "YOU'RE DEAD"
 
 [node name="RestartButton" type="Button" parent="CanvasLayer2/DeathMenu/Panel/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
+text = "RESTART
+"
+text_overrun_behavior = 1
 
 [node name="MenuButton" type="Button" parent="CanvasLayer2/DeathMenu/Panel/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
+text = "BACK TO MENU"
+text_overrun_behavior = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
@@ -602,3 +617,6 @@ theme_override_fonts/font = ExtResource("6_gbqnl")
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer2/DeathMenu/Panel/VBoxContainer/RestartButton" to="CanvasLayer2/DeathMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/DeathMenu/Panel/VBoxContainer/MenuButton" to="CanvasLayer2/DeathMenu" method="_on_menu_button_pressed"]
