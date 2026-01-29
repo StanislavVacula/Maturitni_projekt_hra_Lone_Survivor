@@ -503,6 +503,8 @@ script = ExtResource("3_gbqnl")
 script = ExtResource("6_6yjpi")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 10
+follow_viewport_enabled = true
 
 [node name="DeathMenu" type="Control" parent="CanvasLayer2"]
 process_mode = 2
@@ -513,21 +515,44 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("2_0epgs")
 
 [node name="Panel" type="Panel" parent="CanvasLayer2/DeathMenu"]
 process_mode = 2
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/DeathMenu/Panel"]
 process_mode = 2
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 47.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -46.5
+offset_right = 52.5
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 0
 alignment = 1
 
@@ -536,6 +561,8 @@ process_mode = 2
 layout_mode = 2
 mouse_filter = 0
 text = "YOU'RE DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RestartButton" type="Button" parent="CanvasLayer2/DeathMenu/Panel/VBoxContainer"]
 process_mode = 2
