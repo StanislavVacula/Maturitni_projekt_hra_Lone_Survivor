@@ -33,8 +33,6 @@ func _ready():
 func _process(delta):
 	if player == null:
 		return
-
-	# SMRT PÁDEM
 	if player.global_position.y >= DEATH_Y and step != TutorialStep.GAME_OVER:
 		freeze_game_at_death()
 		return
@@ -61,8 +59,6 @@ func update_text():
 		TutorialStep.GAME_OVER:
 			label.visible = false
 
-# ---------- TUTORIAL KROKY ----------
-
 func check_alive():
 	await get_tree().create_timer(1.2).timeout
 	if step == TutorialStep.ALIVE:
@@ -78,8 +74,6 @@ func check_jump():
 	if not player.is_on_floor():
 		step = TutorialStep.DONE
 		update_text()
-
-# ---------- SMRT ----------
 
 func freeze_game_at_death():
 	step = TutorialStep.GAME_OVER

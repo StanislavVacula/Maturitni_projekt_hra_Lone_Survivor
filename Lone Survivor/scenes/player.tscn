@@ -87,7 +87,8 @@ script = ExtResource("1_g2els")
 position = Vector2(-4, -5)
 scale = Vector2(4.42188, 4.42188)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.862242
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-3.96876, -5.052)
