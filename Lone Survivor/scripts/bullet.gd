@@ -1,10 +1,8 @@
-extends Area2D
+extends CharacterBody2D
 
-@export var speed: float = 400  
-var direction: int = 1          
+var dir: float
+var speed := 800
 
 func _physics_process(delta):
-	position.x += speed * direction * delta
-
-	if position.x < 0 or position.x > get_viewport_rect().size.x:
-		queue_free()
+	velocity = Vector2.RIGHT.rotated(dir) * speed
+	move_and_slide()

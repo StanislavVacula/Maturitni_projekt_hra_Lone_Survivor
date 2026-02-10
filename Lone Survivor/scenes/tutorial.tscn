@@ -535,7 +535,7 @@ layer_0/tile_data = PackedInt32Array(983009, 589824, 6, 983013, 786432, 6, 91749
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="." instance=ExtResource("5_nlqja")]
-position = Vector2(234, 210)
+position = Vector2(-302, 208)
 slide_on_ceiling = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
