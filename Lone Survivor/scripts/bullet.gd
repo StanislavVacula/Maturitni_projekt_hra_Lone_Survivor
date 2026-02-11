@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
-var dir: float
-var speed := 800
+@export var speed: float = 500.0
+var direction: int = 1   # -1 = doleva, 1 = doprava
+
+func _ready():
+	# debug
+	print("BULLET SPAWNED, direction =", direction)
 
 func _physics_process(delta):
-	velocity = Vector2.RIGHT.rotated(dir) * speed
+	velocity.x = direction * speed
 	move_and_slide()
