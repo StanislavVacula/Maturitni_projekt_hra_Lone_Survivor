@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://chkus4xclycai"]
+[gd_scene load_steps=7 format=3 uid="uid://chkus4xclycai"]
 
 [ext_resource type="Texture2D" uid="uid://w5ye507e4866" path="res://assets/chars.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://c7gtlipx7kwum" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://c5binyqmkrhjy" path="res://scenes/bullet.tscn" id="2_4ra3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7p1mj"]
 atlas = ExtResource("1_7p1mj")
@@ -21,8 +22,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 size = Vector2(40, 64)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_md0e3")
+bullet_scene = ExtResource("2_4ra3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4.26563, 4.26563)
@@ -36,4 +38,5 @@ shape = SubResource("RectangleShape2D_md0e3")
 target_position = Vector2(41, 0)
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(11, 5)
+position = Vector2(21, 11)
+gizmo_extents = 325.3

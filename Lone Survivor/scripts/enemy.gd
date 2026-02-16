@@ -1,15 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 0
-const CHANGE_TIME = 2.0
-const SHOOT_COOLDOWN = 0.6
-const RAY_LENGTH = 300
-
-var direction := 1
-var timer := 0.0
-var chasing := false
-var shoot_timer := 0.0
-var player: Node2D = null
+const SHOOT_COOLDOWN := 1.0
+const RAY_LENGTH := 400.0
 
 @export var bullet_scene: PackedScene
 
@@ -17,65 +9,57 @@ var player: Node2D = null
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var muzzle: Marker2D = $Muzzle
 
+var shoot_timer := 0.0
+var player: Node2D = null
+
 func _ready():
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
 
-	raycast.target_position = Vector2(RAY_LENGTH, 0)
 	raycast.enabled = true
 
-func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+func _physics_process(delta):
+	if player == null:
+		return
 
-	chasing = false
+	# směr k hráči
+	var dir_to_player = (player.global_position - global_position).normalized()
 
+	# raycast směr
+	raycast.target_position = dir_to_player * RAY_LENGTH
+
+	# otočení enemáka
+	if dir_to_player.x != 0:
+		sprite.flip_h = dir_to_player.x < 0
+
+		# správné překlápění muzzle
+		muzzle.position.x = abs(muzzle.position.x) * sign(dir_to_player.x)
+
+	# cooldown
+	shoot_timer -= delta
+
+	# detekce hráče
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider and collider.is_in_group("player"):
-			chasing = true
+			if shoot_timer <= 0:
+				shoot(dir_to_player)
+				shoot_timer = SHOOT_COOLDOWN
 
-	if chasing and player:
-		velocity.x = 0
 
-		direction = sign(player.global_position.x - global_position.x)
-		if direction == 0:
-			direction = 1
-
-		shoot_timer -= delta
-		if shoot_timer <= 0:
-			shoot()
-			shoot_timer = SHOOT_COOLDOWN
-	else:
-		velocity.x = direction * SPEED
-		timer += delta
-		if timer >= CHANGE_TIME:
-			direction *= -1
-			timer = 0.0
-
-	sprite.flip_h = direction < 0
-	raycast.target_position = Vector2(RAY_LENGTH * direction, 0)
-
-	# otočení muzzle podle směru
-	muzzle.position.x = abs(muzzle.position.x) * direction
-
-	move_and_slide()
-
-func shoot():
+func shoot(dir: Vector2):
 	if bullet_scene == null:
-		push_warning("❌ Bullet scene není nastavená!")
+		push_warning("Bullet scene není nastavená!")
 		return
 
-	print("SHOOT CALLED")
+	print("SHOOT")
 
 	var bullet = bullet_scene.instantiate()
 
-	# pozice
-	bullet.global_position = muzzle.global_position
+	# 🔥 KLÍČOVÉ ŘÁDKY:
+	bullet.global_transform = muzzle.global_transform
+	bullet.direction = dir.normalized()
 
-	# směr střely
-	bullet.direction = direction
-
-	# přidání do scény
+	# přidání do root scény (ne jako child enemáka!)
 	get_tree().current_scene.add_child(bullet)
