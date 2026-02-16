@@ -1,26 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://deeerk63lmiop"]
+[gd_scene load_steps=4 format=3 uid="uid://deeerk63lmiop"]
 
 [ext_resource type="Script" uid="uid://c33go3684q26t" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://br8kllnobsdyi" path="res://assets/logo_hry.png" id="2_ekxnf"]
+[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="3_bqqt6"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_l6cm7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1151.0
+offset_bottom = 1085.0
+scale = Vector2(1, 0.6)
+texture = ExtResource("2_ekxnf")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Lone Survivor"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 1151.0
+offset_bottom = 654.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 100
 text = "PLAY
 "
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 100
 text = "QUIT"
