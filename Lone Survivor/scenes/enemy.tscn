@@ -38,5 +38,5 @@ shape = SubResource("RectangleShape2D_md0e3")
 target_position = Vector2(41, 0)
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(21, 11)
-gizmo_extents = 325.3
+position = Vector2(23, 11)
+gizmo_extents = 0.0

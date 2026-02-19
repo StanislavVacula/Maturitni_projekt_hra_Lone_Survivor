@@ -99,5 +99,5 @@ polygon = PackedVector2Array(-3.01075, 9.92571, 1.2434, 9.92571, 2.74487, 6.2444
 position = Vector2(-4, -5)
 stream = ExtResource("3_srqg1")
 
-[node name="Muzzle" type="Node2D" parent="."]
+[node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(14, 0)

@@ -13,6 +13,8 @@ var shoot_timer := 0.0
 var player: Node2D = null
 
 func _ready():
+	raycast.collision_mask = 2  
+	raycast.enabled = true
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
@@ -53,9 +55,17 @@ func shoot(dir: Vector2):
 		push_warning("Bullet scene není nastavená!")
 		return
 
-	print("SHOOT")
-
 	var bullet = bullet_scene.instantiate()
+
+	# 1. NEJDŘÍV přidat do scény
+	get_tree().current_scene.add_child(bullet)
+
+	# 2. POTOM nastavit pozici a směr
+	bullet.global_position = muzzle.global_position
+	bullet.direction = dir.normalized()
+	
+	# Pokud chceš, aby se náboj i otočil ve směru letu:
+	bullet.rotation = dir.angle()
 
 	# 🔥 KLÍČOVÉ ŘÁDKY:
 	bullet.global_transform = muzzle.global_transform

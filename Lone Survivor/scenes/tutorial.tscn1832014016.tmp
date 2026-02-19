@@ -494,7 +494,7 @@ collision_layer = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(111, -45)
-zoom = Vector2(1, 0.934)
+zoom = Vector2(0.5, 0.467)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
@@ -509,12 +509,11 @@ follow_viewport_enabled = true
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
 motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(2301, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -10
-position = Vector2(0, 445)
-scale = Vector2(1.49805, 1.20996)
+position = Vector2(407.683, 414)
+scale = Vector2(0.768643, 0.521484)
 texture = ExtResource("2_ckvwl")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -571,55 +570,43 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="UI_Root" type="Control" parent="CanvasLayer2"]
+[node name="UI_Root" type="Control" parent="."]
 process_mode = 2
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -141.0
-offset_top = 217.0
-offset_right = 9.0
-offset_bottom = 217.0
+offset_left = -718.0
+offset_top = -107.0
+offset_right = -568.0
+offset_bottom = -107.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DeathMenu" type="Control" parent="CanvasLayer2/UI_Root" groups=["death_menu"]]
+[node name="DeathMenu" type="Control" parent="UI_Root" groups=["death_menu"]]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_horizontal = 4
+script = ExtResource("2_0epgs")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI_Root/DeathMenu"]
 process_mode = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1692.0
-offset_top = -91.0
-offset_right = 1542.0
-offset_bottom = -91.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-script = ExtResource("2_0epgs")
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer2/UI_Root/DeathMenu"]
-process_mode = 2
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer2/UI_Root/DeathMenu/CenterContainer"]
+[node name="Panel" type="Panel" parent="UI_Root/DeathMenu/CenterContainer"]
 process_mode = 2
-custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/UI_Root/DeathMenu/CenterContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI_Root/DeathMenu/CenterContainer/Panel"]
 process_mode = 2
 layout_mode = 1
 anchors_preset = 15
@@ -630,7 +617,7 @@ grow_vertical = 2
 mouse_filter = 0
 alignment = 1
 
-[node name="DeathText" type="Label" parent="CanvasLayer2/UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer"]
+[node name="DeathText" type="Label" parent="UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer"]
 process_mode = 2
 layout_mode = 2
 mouse_filter = 0
@@ -638,18 +625,18 @@ text = "YOU'RE DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" type="Button" parent="CanvasLayer2/UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer"]
 process_mode = 2
 layout_mode = 2
 text = "RESTART
 "
 text_overrun_behavior = 1
 
-[node name="MenuButton" type="Button" parent="CanvasLayer2/UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer"]
+[node name="MenuButton" type="Button" parent="UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer"]
 process_mode = 2
 layout_mode = 2
 text = "BACK TO MENU"
 text_overrun_behavior = 2
 
-[connection signal="pressed" from="CanvasLayer2/UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer/RestartButton" to="CanvasLayer2/UI_Root/DeathMenu" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CanvasLayer2/UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer/MenuButton" to="CanvasLayer2/UI_Root/DeathMenu" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer/RestartButton" to="UI_Root/DeathMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UI_Root/DeathMenu/CenterContainer/Panel/VBoxContainer/MenuButton" to="UI_Root/DeathMenu" method="_on_menu_button_pressed"]

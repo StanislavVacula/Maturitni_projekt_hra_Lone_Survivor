@@ -18,22 +18,21 @@ var death_menu: Control
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	# Opravená cesta k death menu podle tvé struktury
 	death_menu = $"../CanvasLayer2/UI_Root/DeathMenu"
 
 	if player == null:
 		push_error("TutorialManager: Player not found!")
 		return
 
-	if death_menu == null:
-		push_error("TutorialManager: DeathMenu not found!")
-		return
-
 	update_text()
 
-func _process(delta):
-	if player == null:
+func _process(_delta):
+	if player == null or step == TutorialStep.GAME_OVER:
 		return
-	if player.global_position.y >= DEATH_Y and step != TutorialStep.GAME_OVER:
+
+	# KONTROLA SMRTI (Pád do propasti NEBO ztráta životů)
+	if player.global_position.y >= DEATH_Y or player.is_dead:
 		freeze_game_at_death()
 		return
 
@@ -60,10 +59,13 @@ func update_text():
 			label.visible = false
 
 func check_alive():
-	await get_tree().create_timer(1.2).timeout
+	# await v _process může být zrádný, ale pro tutorial ok
 	if step == TutorialStep.ALIVE:
-		step = TutorialStep.MOVE
-		update_text()
+		# Jednoduchý timer, aby text nezmizel hned
+		await get_tree().create_timer(1.2).timeout
+		if step == TutorialStep.ALIVE: # Kontrola, jestli mezitím neumřel
+			step = TutorialStep.MOVE
+			update_text()
 
 func check_move():
 	if abs(player.velocity.x) > 0:
@@ -77,9 +79,16 @@ func check_jump():
 
 func freeze_game_at_death():
 	step = TutorialStep.GAME_OVER
-
-	player.velocity = Vector2.ZERO
+	
+	# Vypneme UI tutorialu
+	label.visible = false
+	
+	# Pro jistotu zastavíme hráče, pokud ho trefil náboj
 	player.input_enabled = false
-	player.set_physics_process(false)
-
-	death_menu.show_menu()
+	player.velocity = Vector2.ZERO
+	
+	# Zobrazíme tvoje menu
+	if death_menu:
+		death_menu.show_menu() # Volá tvoji funkci v DeathMenu skriptu
+	else:
+		push_error("TutorialManager: Nemůžu najít DeathMenu pro zobrazení!")
