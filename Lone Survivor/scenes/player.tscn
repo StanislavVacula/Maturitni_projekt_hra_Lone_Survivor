@@ -1,8 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://duwsmjvwd6pk8"]
+[gd_scene load_steps=17 format=3 uid="uid://duwsmjvwd6pk8"]
 
 [ext_resource type="Texture2D" uid="uid://w5ye507e4866" path="res://assets/chars.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://djfmq3e8bcmuh" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dqkfvcv762fck" path="res://assets/chars kopie.png" id="2_dqkch"]
 [ext_resource type="AudioStream" uid="uid://b3v08r2pukoh8" path="res://sounds/jump.wav" id="3_srqg1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(20, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
@@ -39,6 +48,17 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
 resource_name = "walk"
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}],
+"loop": false,
+"name": &"fist",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tuyoq")
@@ -79,6 +99,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(39, 40)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 slide_on_ceiling = false
 script = ExtResource("1_g2els")
@@ -87,8 +110,8 @@ script = ExtResource("1_g2els")
 position = Vector2(-4, -5)
 scale = Vector2(4.42188, 4.42188)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"walk"
-frame_progress = 0.862242
+animation = &"fist"
+frame_progress = 0.885848
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-3.96876, -5.052)
@@ -101,3 +124,9 @@ stream = ExtResource("3_srqg1")
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(14, 0)
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(9.5, 10)
+shape = SubResource("RectangleShape2D_qhqgy")

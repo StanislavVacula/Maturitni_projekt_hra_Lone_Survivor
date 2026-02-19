@@ -4,11 +4,16 @@ enum TutorialStep {
 	ALIVE,
 	MOVE,
 	JUMP,
+	WATER_WARNING,
+	CLIMB_HELP,     # Text u lian
 	DONE,
 	GAME_OVER
 }
 
 const DEATH_Y := 730
+const WATER_X_START := 450.0 
+const WATER_X_END := 800.0    # Kdy naskočí text o lianách (kousek za vodou)
+const FINAL_X_POS := 1400.0   # Kdy tutorial úplně zmizí (za lianami)
 
 var step := TutorialStep.ALIVE
 var player: CharacterBody2D
@@ -18,20 +23,14 @@ var death_menu: Control
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-	# Opravená cesta k death menu podle tvé struktury
 	death_menu = $"../CanvasLayer2/UI_Root/DeathMenu"
-
-	if player == null:
-		push_error("TutorialManager: Player not found!")
-		return
-
+	if player == null: return
 	update_text()
 
 func _process(_delta):
-	if player == null or step == TutorialStep.GAME_OVER:
-		return
+	if player == null or step == TutorialStep.GAME_OVER: return
 
-	# KONTROLA SMRTI (Pád do propasti NEBO ztráta životů)
+	# KONTROLA SMRTI
 	if player.global_position.y >= DEATH_Y or player.is_dead:
 		freeze_game_at_death()
 		return
@@ -43,52 +42,69 @@ func _process(_delta):
 			check_move()
 		TutorialStep.JUMP:
 			check_jump()
+		TutorialStep.WATER_WARNING:
+			check_water_proximity()
+		TutorialStep.CLIMB_HELP:
+			check_climb_progress()
 
 func update_text():
 	match step:
 		TutorialStep.ALIVE:
 			label.visible = true
-			label.text = "I'm alive! Let's get moving!"
+			label.text = "... what happened? My head... I need to get up."
 		TutorialStep.MOVE:
-			label.text = "Use ← → to move"
+			label.text = "Move: ARROW KEYS"
 		TutorialStep.JUMP:
-			label.text = "Press SPACE to jump"
+			label.text = "The path is blocked. \nJump: SPACEBAR"
+		TutorialStep.WATER_WARNING:
+			label.visible = true
+			label.text = "The swamp looks deep. \nDon't fall in!"
+		TutorialStep.CLIMB_HELP:
+			label.visible = true
+			label.text = "I need to get higher. \nJump through the vines!"
 		TutorialStep.DONE:
+			label.text = "Objective: Find the extraction point."
+			var tween = create_tween()
+			tween.tween_interval(3.0)
+			tween.tween_property(label, "modulate:a", 0.0, 1.5)
+			await tween.finished
 			label.visible = false
 		TutorialStep.GAME_OVER:
 			label.visible = false
 
 func check_alive():
-	# await v _process může být zrádný, ale pro tutorial ok
+	await get_tree().create_timer(2.0).timeout
 	if step == TutorialStep.ALIVE:
-		# Jednoduchý timer, aby text nezmizel hned
-		await get_tree().create_timer(1.2).timeout
-		if step == TutorialStep.ALIVE: # Kontrola, jestli mezitím neumřel
-			step = TutorialStep.MOVE
-			update_text()
-
-func check_move():
-	if abs(player.velocity.x) > 0:
-		step = TutorialStep.JUMP
+		step = TutorialStep.MOVE
 		update_text()
 
+func check_move():
+	if abs(player.velocity.x) > 0.1:
+		await get_tree().create_timer(1.0).timeout
+		if step == TutorialStep.MOVE:
+			step = TutorialStep.JUMP
+			update_text()
+
 func check_jump():
-	if not player.is_on_floor():
+	if player.global_position.x > WATER_X_START:
+		step = TutorialStep.WATER_WARNING
+		update_text()
+
+func check_water_proximity():
+	# Text o lianách naskočí dřív - hned jak hráč překoná propast
+	if player.global_position.x > WATER_X_END:
+		step = TutorialStep.CLIMB_HELP
+		update_text()
+
+func check_climb_progress():
+	# Teď neřešíme výšku Y, ale jen to, že hráč postoupil dál v levelu
+	if player.global_position.x > FINAL_X_POS:
 		step = TutorialStep.DONE
 		update_text()
 
 func freeze_game_at_death():
 	step = TutorialStep.GAME_OVER
-	
-	# Vypneme UI tutorialu
 	label.visible = false
-	
-	# Pro jistotu zastavíme hráče, pokud ho trefil náboj
 	player.input_enabled = false
 	player.velocity = Vector2.ZERO
-	
-	# Zobrazíme tvoje menu
-	if death_menu:
-		death_menu.show_menu() # Volá tvoji funkci v DeathMenu skriptu
-	else:
-		push_error("TutorialManager: Nemůžu najít DeathMenu pro zobrazení!")
+	if death_menu: death_menu.show_menu()

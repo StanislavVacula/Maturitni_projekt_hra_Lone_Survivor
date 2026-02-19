@@ -1,83 +1,88 @@
 extends CharacterBody2D
 
-const SPEED = 120.0
-const JUMP_VELOCITY = -300.0
+const SPEED := 100.0          
+const JUMP_VELOCITY := -350.0
+const ATTACK_COOLDOWN := 0.5 
 
-@export var bullet_scene: PackedScene
-@export var max_health := 3
-
-var health: int
-var is_dead := false
+var health := 5 
 var input_enabled := true
+var is_dead := false
+var attack_timer := 0.0 
 
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var jump_sound = $JumpSound
-@onready var muzzle: Node2D = $Muzzle
-@onready var health_label: Label = get_tree().current_scene.find_child("HealthLabel", true, false)
+@onready var sprite = $AnimatedSprite2D
+@onready var attack_area = get_node_or_null("AttackArea") 
 
-func _ready():
-	health = max_health
-	add_to_group("player")
-	update_ui()
-
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	if not input_enabled or is_dead:
 		return
 
+	# Odpočítávání cooldownu
+	if attack_timer > 0:
+		attack_timer -= delta
+
+	# Gravitace
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# Skok
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		if jump_sound: jump_sound.play()
 
+	# Pohyb
 	var direction := Input.get_axis("ui_left", "ui_right")
-	velocity.x = direction * SPEED
+	if direction:
+		velocity.x = direction * SPEED
+		sprite.flip_h = direction < 0
+		if attack_area:
+			attack_area.scale.x = -1 if direction < 0 else 1
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if direction != 0:
-		anim.flip_h = direction < 0
-		muzzle.position.x = abs(muzzle.position.x) * sign(direction)
+	# ÚTOK
+	if Input.is_action_just_pressed("attack") and attack_timer <= 0:
+		perform_attack()
 
-	move_and_slide()
+	# --- TADY JE TA OPRAVENÁ LOGIKA ANIMACÍ ---
 	update_animations(direction)
 
-	if Input.is_action_just_pressed("shoot"):
-		fire()
+	move_and_slide()
 
 func update_animations(direction):
-	if not is_on_floor():
-		anim.play("jump")
-	elif direction != 0:
-		anim.play("walk")
-	else:
-		anim.play("idle")
+	# Pokud právě probíhá animace úderu, nebudeme ji ničím přerušovat
+	if sprite.animation == "fist" and sprite.is_playing():
+		return
 
-func fire():
-	if bullet_scene == null: return
-	var bullet = bullet_scene.instantiate()
-	var shoot_dir = Vector2.LEFT if anim.flip_h else Vector2.RIGHT
-	get_tree().current_scene.add_child(bullet)
-	bullet.global_position = muzzle.global_position
-	if "direction" in bullet:
-		bullet.direction = shoot_dir
+	# Jinak hrajeme klasiku podle stavu
+	if not is_on_floor():
+		sprite.play("jump")
+	elif direction != 0:
+		sprite.play("walk")
+	else:
+		sprite.play("idle")
+
+func perform_attack():
+	if not attack_area:
+		return
+	
+	attack_timer = ATTACK_COOLDOWN 
+	sprite.play("fist") # Spustí animaci pěsti
+	
+	# Zásah nepřítele
+	var targets = attack_area.get_overlapping_bodies()
+	for target in targets:
+		if target.is_in_group("enemy") and target.has_method("take_damage"):
+			target.take_damage(1)
 
 func take_damage(amount: int):
-	if is_dead: return
 	health -= amount
-	update_ui()
+	sprite.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color(1, 1, 1)
 	
 	if health <= 0:
 		die()
 
-func update_ui():
-	if health_label:
-		health_label.text = "Health: " + str(health)
-
 func die():
 	is_dead = true
 	input_enabled = false
-	velocity = Vector2.ZERO
-	if anim.sprite_frames.has_animation("death"):
-		anim.play("death")
-	# Tady jen zastavíme fyziku, zbytek vyřeší TutorialManager
-	set_physics_process(false)
+	sprite.play("death")
