@@ -20,7 +20,7 @@ var direction := -1.0
 func _ready():
 	add_to_group("enemy")
 	raycast.add_exception(self)
-	raycast.collision_mask = 2 
+	raycast.collision_mask = 2 # Předpokládám, že 2 je Layer pro hráče
 	patrol_timer = PATROL_DURATION
 	
 	var players = get_tree().get_nodes_in_group("player")
@@ -28,20 +28,21 @@ func _ready():
 		player = players[0]
 
 func _physics_process(delta):
-	# DŮLEŽITÉ: shoot_timer se musí odečítat VŽDY, ne jen v hlídce
+	# Odpočet střelby běží neustále
 	if shoot_timer > 0:
 		shoot_timer -= delta
 
 	var can_see_player = false
 	var dir_to_player = Vector2.ZERO
 
+	# Logika detekce hráče
 	if player != null and not player.is_dead:
 		var dist_to_player = global_position.distance_to(player.global_position)
 		
 		if dist_to_player < RAY_LENGTH:
 			dir_to_player = (player.global_position - global_position).normalized()
 			
-			# Kontrola zorného pole (přidána tolerance, aby mohl střílet i když se trochu pohneš)
+			# Kontrola, zda hráč není za zády nebo zda už enemy stojí a míří
 			if (dir_to_player.x > 0 and direction > 0) or (dir_to_player.x < 0 and direction < 0) or velocity.x == 0:
 				raycast.target_position = to_local(player.global_position)
 				raycast.force_raycast_update()
@@ -51,10 +52,10 @@ func _physics_process(delta):
 					if collider and collider.is_in_group("player"):
 						can_see_player = true
 
+	# POHYB A ÚTOK
 	if can_see_player:
 		velocity.x = 0
-		sprite.play("idle")
-		handle_combat(dir_to_player) # Delta už v handle_combat nepotřebujeme
+		handle_combat(dir_to_player)
 	else:
 		patrol_timer -= delta
 		if patrol_timer <= 0 or is_on_wall():
@@ -62,18 +63,29 @@ func _physics_process(delta):
 			patrol_timer = PATROL_DURATION
 		
 		velocity.x = direction * SPEED
-		sprite.play("walk")
-		sprite.flip_h = direction < 0
+		# Otáčení muzzle (hlavně) podle směru chůze
 		muzzle.position.x = abs(muzzle.position.x) * direction
+
+	# ZPRACOVÁNÍ ANIMACÍ (Tady se řeší tvůj problém)
+	if velocity.x == 0:
+		# Pokud stojí, hraj idle (pokud se tvoje animace jmenuje "default", přepiš to zde)
+		if sprite.animation != "idle":
+			sprite.play("idle")
+	else:
+		# Pokud jde, hraj walk
+		if sprite.animation != "walk":
+			sprite.play("walk")
+		# Otáčení spritu podle směru pohybu
+		sprite.flip_h = direction < 0
 
 	move_and_slide()
 
 func handle_combat(dir: Vector2):
-	# Otočení k hráči
+	# Otočení k hráči při střelbě
 	sprite.flip_h = dir.x < 0
 	muzzle.position.x = abs(muzzle.position.x) * sign(dir.x)
 	
-	# Pokud je timer na nule, vystřel
+	# Výstřel
 	if shoot_timer <= 0:
 		shoot(dir)
 		shoot_timer = SHOOT_COOLDOWN
@@ -89,11 +101,9 @@ func shoot(dir: Vector2):
 	bullet.global_position = muzzle.global_position
 	bullet.direction = dir.normalized()
 	bullet.rotation = dir.angle()
-	print("Enemy vystřelil!") # Debug výpis
 
 func take_damage(amount: int):
 	health -= amount
-	print("Nepřítel dostal ránu! Životy: ", health)
 	
 	var tween = create_tween()
 	tween.tween_property(sprite, "modulate", Color(5, 5, 5), 0.1)
@@ -103,5 +113,4 @@ func take_damage(amount: int):
 		die()
 
 func die():
-	print("Nepřítel byl poražen.")
 	queue_free()

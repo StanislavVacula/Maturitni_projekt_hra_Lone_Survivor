@@ -1,12 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://chkus4xclycai"]
+[gd_scene load_steps=11 format=3 uid="uid://chkus4xclycai"]
 
 [ext_resource type="Texture2D" uid="uid://w5ye507e4866" path="res://assets/chars.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://c7gtlipx7kwum" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="PackedScene" uid="uid://c5binyqmkrhjy" path="res://scenes/bullet.tscn" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://dqkfvcv762fck" path="res://assets/chars kopie.png" id="4_5uy6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7p1mj"]
 atlas = ExtResource("1_7p1mj")
 region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("4_5uy6h")
+region = Rect2(2, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("4_5uy6h")
+region = Rect2(18, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("4_5uy6h")
+region = Rect2(34, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -15,7 +28,21 @@ animations = [{
 "texture": SubResource("AtlasTexture_7p1mj")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -29,6 +56,8 @@ bullet_scene = ExtResource("2_4ra3w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4.26563, 4.26563)
 sprite_frames = SubResource("SpriteFrames_md0e3")
+animation = &"walk"
+frame_progress = 0.338769
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
