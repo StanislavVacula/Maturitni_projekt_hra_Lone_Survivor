@@ -1,7 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://djwijp855w0gx"]
 
 [ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_cq4me"]
-[ext_resource type="Script" uid="uid://dwccod64bad2g" path="res://scripts/death_menu.gd" id="2_0epgs"]
 [ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="2_6yjpi"]
 [ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="2_ckvwl"]
 [ext_resource type="Script" uid="uid://s1exvqsr4rtr" path="res://scripts/camera_2d.gd" id="3_gbqnl"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ciyeib2wemx5o" path="res://assets/TileSet/Nature_props_01.png" id="6_nlqja"]
 [ext_resource type="PackedScene" uid="uid://drwqujtq4v08q" path="res://scenes/helicopter.tscn" id="11_g2equ"]
 [ext_resource type="PackedScene" uid="uid://mkk0cxr05j34" path="res://scenes/liana.tscn" id="12_tbcdj"]
+[ext_resource type="PackedScene" uid="uid://4xh7w3vdl50l" path="res://scenes/death_menu.tscn" id="13_0hilk"]
 [ext_resource type="PackedScene" uid="uid://bpu3ed1xtao0c" path="res://scenes/pause_menu.tscn" id="13_ej4tf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
@@ -677,76 +677,6 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="DeathMenu" type="Control" parent="CanvasLayer2" groups=["death_menu"]]
-process_mode = 2
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -167.0
-offset_top = 152.0
-offset_right = -163.0
-offset_bottom = -67.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-script = ExtResource("2_0epgs")
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer2/DeathMenu"]
-process_mode = 2
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer2/DeathMenu/CenterContainer"]
-process_mode = 2
-custom_minimum_size = Vector2(300, 200)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/DeathMenu/CenterContainer/Panel"]
-process_mode = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.5
-offset_top = 4.0
-offset_right = 1.5
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-alignment = 1
-
-[node name="DeathText" type="Label" parent="CanvasLayer2/DeathMenu/CenterContainer/Panel/VBoxContainer"]
-process_mode = 2
-layout_mode = 2
-mouse_filter = 0
-text = "YOU'RE DEAD"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RestartButton" type="Button" parent="CanvasLayer2/DeathMenu/CenterContainer/Panel/VBoxContainer"]
-process_mode = 2
-layout_mode = 2
-text = "RESTART
-"
-text_overrun_behavior = 1
-
-[node name="MenuButton" type="Button" parent="CanvasLayer2/DeathMenu/CenterContainer/Panel/VBoxContainer"]
-process_mode = 2
-layout_mode = 2
-text = "BACK TO MENU"
-text_overrun_behavior = 2
-
 [node name="Helicopter" parent="." instance=ExtResource("11_g2equ")]
 position = Vector2(-563, 122)
 
@@ -757,14 +687,12 @@ position = Vector2(361, 200)
 position = Vector2(441, 159)
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PauseMenu" parent="CanvasLayer3" instance=ExtResource("13_ej4tf")]
-visible = false
-offset_left = -400.0
-offset_top = -23.0
-offset_right = 395.0
-offset_bottom = 43.0
 
-[connection signal="pressed" from="CanvasLayer2/DeathMenu/CenterContainer/Panel/VBoxContainer/RestartButton" to="CanvasLayer2/DeathMenu" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CanvasLayer2/DeathMenu/CenterContainer/Panel/VBoxContainer/MenuButton" to="CanvasLayer2/DeathMenu" method="_on_menu_button_pressed"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="DeathMenu" parent="CanvasLayer2" instance=ExtResource("13_0hilk")]
+offset_top = -3.0
+offset_right = 6.0
+offset_bottom = 1.0

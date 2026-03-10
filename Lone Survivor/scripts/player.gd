@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack") and attack_timer <= 0:
 		perform_attack()
 
-	# --- TADY JE TA OPRAVENÁ LOGIKA ANIMACÍ ---
+	# Animace
 	update_animations(direction)
 
 	move_and_slide()
@@ -83,6 +83,20 @@ func take_damage(amount: int):
 		die()
 
 func die():
+	if is_dead: return # Pojistka, aby se to nespouštělo víckrát
+	
 	is_dead = true
 	input_enabled = false
-	sprite.play("death")
+	sprite.play("death") # Přehraje animaci postavy (pokud máš)
+	
+	# --- TADY JE TO PROPOJENÍ S DEATH MENU ---
+	# Najde v aktuální scéně uzel s názvem "DeathMenu"
+	var death_menu = get_tree().current_scene.find_child("DeathMenu")
+	
+	if death_menu:
+		death_menu.show_death()
+	else:
+		# Pokud bys ho zapomněl přidat do scény, tak aspoň restartuj, ať to nezamrzne
+		print("Chyba: DeathMenu nebylo nalezeno v hlavní scéně!")
+		await get_tree().create_timer(1.0).timeout
+		get_tree().reload_current_scene()
