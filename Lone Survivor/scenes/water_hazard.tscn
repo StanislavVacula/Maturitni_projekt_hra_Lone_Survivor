@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://xe7nk0dknujd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwd68"]
+size = Vector2(128.25, 35.5)
+
+[node name="water_hazard" type="Area2D" groups=["water"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["water"]]
+position = Vector2(38.875, 0)
+shape = SubResource("RectangleShape2D_nwd68")
