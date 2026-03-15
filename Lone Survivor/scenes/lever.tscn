@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://sy6o0ayibve3"]
+
+[ext_resource type="Texture2D" uid="uid://cg7e3maw8do7y" path="res://assets/old_growth_items_sprites.png" id="1_4kwec"]
+[ext_resource type="Script" uid="uid://cn7be5kc46cg8" path="res://scripts/lever.gd" id="1_ncfea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhxoo"]
+atlas = ExtResource("1_4kwec")
+region = Rect2(40, 24, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ieuq"]
+atlas = ExtResource("1_4kwec")
+region = Rect2(20, 24, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pa2l1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhxoo")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ieuq")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bphau"]
+size = Vector2(24, 23)
+
+[node name="Lever" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ncfea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.5, -2.5)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_pa2l1")
+animation = &"off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -1.5)
+shape = SubResource("RectangleShape2D_bphau")

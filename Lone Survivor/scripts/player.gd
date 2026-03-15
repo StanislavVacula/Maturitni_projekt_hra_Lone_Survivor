@@ -8,28 +8,33 @@ var health := 5
 var input_enabled := true
 var is_dead := false
 var attack_timer := 0.0 
+var lever_in_range: Area2D = null # Store the lever player is standing at
 
 @onready var sprite = $AnimatedSprite2D
 @onready var attack_area = get_node_or_null("AttackArea") 
-# ODKAZ NA NOVOU DETEKČNÍ ZÓNU:
-@onready var hrac_detekce = $HracDetekce 
+@onready var detection_area = $HracDetekce 
 
 func _ready():
-	# Propojíme signál z té Area2D, kterou jsi právě přidal pod hráče
-	if hrac_detekce:
-		hrac_detekce.area_entered.connect(_on_area_entered)
+	add_to_group("player")
+	if detection_area:
+		detection_area.area_entered.connect(_on_area_entered)
+		detection_area.area_exited.connect(_on_area_exited)
 
 func _physics_process(delta):
 	if is_dead:
+		velocity = Vector2.ZERO
 		return
+
 	if not input_enabled:
 		return
+
 	if attack_timer > 0:
 		attack_timer -= delta
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# --- SKOK A SESKOK ---
+	# Jump and Drop through vines
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor() and Input.is_action_pressed("ui_down"):
 			position.y += 5 
@@ -45,13 +50,15 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if Input.is_action_just_pressed("attack") and attack_timer <= 0:
-		perform_attack()
+	# Interaction / Attack
+	if Input.is_action_just_pressed("attack"):
+		if lever_in_range:
+			lever_in_range.toggle() # Activate lever
+		elif attack_timer <= 0:
+			perform_attack()
 
 	update_animations(direction)
 	move_and_slide()
-
-# ... (funkce update_animations, perform_attack a take_damage zůstávají stejné) ...
 
 func update_animations(direction):
 	if sprite.animation == "fist" and sprite.is_playing():
@@ -81,19 +88,25 @@ func take_damage(amount: int):
 	if health <= 0:
 		die()
 
-# --- OPRAVENÁ DETEKCE ---
+# Detection logic
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("water"):
 		die()
+	if area.is_in_group("lever"):
+		lever_in_range = area
+
+func _on_area_exited(area: Area2D):
+	if area == lever_in_range:
+		lever_in_range = null
 
 func die():
 	if is_dead: return 
 	is_dead = true
 	input_enabled = false
 	velocity = Vector2.ZERO
-	set_physics_process(false) 
+	set_physics_process(false)
 	sprite.play("death") 
 	
-	var death_menu = get_tree().current_scene.find_child("DeathMenu")
+	var death_menu = get_tree().root.find_child("DeathMenu", true, false)
 	if death_menu:
 		death_menu.show_death()

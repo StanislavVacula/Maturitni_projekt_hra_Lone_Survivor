@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://djwijp855w0gx"]
+[gd_scene load_steps=23 format=3 uid="uid://djwijp855w0gx"]
 
 [ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_cq4me"]
 [ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="2_6yjpi"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://4xh7w3vdl50l" path="res://scenes/death_menu.tscn" id="13_0hilk"]
 [ext_resource type="PackedScene" uid="uid://bpu3ed1xtao0c" path="res://scenes/pause_menu.tscn" id="13_ej4tf"]
 [ext_resource type="PackedScene" uid="uid://xe7nk0dknujd" path="res://scenes/water_hazard.tscn" id="15_wr8iv"]
+[ext_resource type="PackedScene" uid="uid://sy6o0ayibve3" path="res://scenes/lever.tscn" id="16_e13mp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 friction = 1.5
@@ -815,3 +816,6 @@ position = Vector2(-151, 427)
 
 [node name="water_hazard1" parent="." instance=ExtResource("15_wr8iv")]
 position = Vector2(1283, 203)
+
+[node name="Lever" parent="." instance=ExtResource("16_e13mp")]
+position = Vector2(1205, -28)
