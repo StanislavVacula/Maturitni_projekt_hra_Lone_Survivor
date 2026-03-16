@@ -22,6 +22,12 @@ var player: CharacterBody2D
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	
+	# Automatické připojení na signál mostu
+	var bridge = get_tree().root.find_child("Bridge", true, false)
+	if bridge:
+		bridge.bridge_activated.connect(_on_bridge_activated)
+		
 	update_text()
 
 func _process(_delta):
@@ -49,12 +55,13 @@ func _process(_delta):
 		TutorialStep.ATTACK: check_attack()
 		TutorialStep.WATER_WARNING: check_water_proximity()
 		TutorialStep.CLIMB_HELP: check_climb_progress()
-		TutorialStep.LEVER_HINT: check_lever_activation()
 
 func update_text():
 	if label == null: return
 	var tween = create_tween()
 	tween.tween_property(label, "modulate:a", 0.0, 0.2)
+	
+	await tween.finished # Počkáme na zmizení textu
 	
 	match step:
 		TutorialStep.ALIVE: label.text = "... what happened? My head..."
@@ -66,7 +73,8 @@ func update_text():
 		TutorialStep.LEVER_HINT: label.text = "Pull the lever by pressing: E"
 		TutorialStep.DONE: label.text = "Objective: Find the extraction point."
 
-	tween.tween_property(label, "modulate:a", 1.0, 0.5) 
+	var tween_in = create_tween()
+	tween_in.tween_property(label, "modulate:a", 1.0, 0.5) 
 
 func check_alive():
 	await get_tree().create_timer(3.0).timeout
@@ -103,7 +111,7 @@ func check_water_proximity():
 func check_climb_progress():
 	pass
 
-func check_lever_activation():
-	if player.lever_in_range != null and player.lever_in_range.is_on:
-		step = TutorialStep.DONE
-		update_text()
+# Voláno signálem z mostu
+func _on_bridge_activated():
+	step = TutorialStep.DONE
+	update_text()

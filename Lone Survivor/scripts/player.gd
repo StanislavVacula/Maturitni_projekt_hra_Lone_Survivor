@@ -41,7 +41,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Skok a liany
+	# Skok a mechanika pro propadávání lianami (Skočit + Šipka dolů)
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor() and Input.is_action_pressed("ui_down"):
 			position.y += 5 
@@ -53,12 +53,12 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		sprite.flip_h = direction < 0
 		if attack_area:
+			# Otočíme oblast útoku podle směru chůze
 			attack_area.scale.x = -1 if direction < 0 else 1
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	# --- ROZDĚLENÉ VSTUPY ---
-	# Použití páčky (tvoje nová akce "pull" - pravděpodobně klávesa E)
+	# Použití páčky (akce "pull" - klávesa E)
 	if Input.is_action_just_pressed("pull"):
 		if lever_in_range:
 			lever_in_range.toggle()
@@ -72,8 +72,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func update_animations(direction):
+	# Pokud zrovna probíhá animace útoku, nebudeme ji přerušovat
 	if sprite.animation == "fist" and sprite.is_playing():
 		return
+		
 	if not is_on_floor():
 		sprite.play("jump")
 	elif direction != 0:
@@ -85,6 +87,7 @@ func perform_attack():
 	if not attack_area: return
 	attack_timer = ATTACK_COOLDOWN 
 	sprite.play("fist") 
+	
 	var targets = attack_area.get_overlapping_bodies()
 	for target in targets:
 		if target.is_in_group("enemy") and target.has_method("take_damage"):
@@ -93,9 +96,11 @@ func perform_attack():
 func take_damage(amount: int):
 	if is_dead: return
 	health -= amount
+	# Krátké zčervenání při zásahu
 	sprite.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1)
+	
 	if health <= 0:
 		die()
 
@@ -120,6 +125,7 @@ func die():
 	set_physics_process(false) 
 	sprite.play("death") 
 	
+	# Vyhledání menu smrti v hlavní scéně
 	var death_menu = get_tree().root.find_child("DeathMenu", true, false)
 	if death_menu:
 		death_menu.show_death()
