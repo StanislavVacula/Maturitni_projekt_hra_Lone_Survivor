@@ -31,19 +31,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bphau"]
-size = Vector2(24, 23)
+size = Vector2(27, 26)
 
-[node name="Lever" type="Area2D"]
-collision_layer = 8
+[node name="Lever" type="Area2D" groups=["lever"]]
 collision_mask = 0
 script = ExtResource("1_ncfea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.5, -2.5)
-scale = Vector2(1.25, 1.25)
+position = Vector2(-4.76837e-07, 4.76837e-07)
+scale = Vector2(1.75, 1.75)
 sprite_frames = SubResource("SpriteFrames_pa2l1")
 animation = &"off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -1.5)
+position = Vector2(1.5, -4)
 shape = SubResource("RectangleShape2D_bphau")

@@ -8,24 +8,31 @@ var health := 5
 var input_enabled := true
 var is_dead := false
 var attack_timer := 0.0 
-var lever_in_range: Area2D = null # Store the lever player is standing at
+var lever_in_range: Area2D = null 
 
 @onready var sprite = $AnimatedSprite2D
 @onready var attack_area = get_node_or_null("AttackArea") 
-@onready var detection_area = $HracDetekce 
+
+# Detekce: HracDetekce = Voda (malá), InterakceDetekce = Páka (velká)
+@onready var detection_voda = $HracDetekce        
+@onready var detection_lever = $InterakceDetekce  
 
 func _ready():
 	add_to_group("player")
-	if detection_area:
-		detection_area.area_entered.connect(_on_area_entered)
-		detection_area.area_exited.connect(_on_area_exited)
+	
+	if detection_voda:
+		if not detection_voda.area_entered.is_connected(_on_water_entered):
+			detection_voda.area_entered.connect(_on_water_entered)
+		
+	if detection_lever:
+		if not detection_lever.area_entered.is_connected(_on_lever_entered):
+			detection_lever.area_entered.connect(_on_lever_entered)
+		if not detection_lever.area_exited.is_connected(_on_lever_exited):
+			detection_lever.area_exited.connect(_on_lever_exited)
 
 func _physics_process(delta):
-	if is_dead:
+	if is_dead or not input_enabled:
 		velocity = Vector2.ZERO
-		return
-
-	if not input_enabled:
 		return
 
 	if attack_timer > 0:
@@ -34,7 +41,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Jump and Drop through vines
+	# Skok a liany
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor() and Input.is_action_pressed("ui_down"):
 			position.y += 5 
@@ -50,11 +57,15 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	# Interaction / Attack
-	if Input.is_action_just_pressed("attack"):
+	# --- ROZDĚLENÉ VSTUPY ---
+	# Použití páčky (tvoje nová akce "pull" - pravděpodobně klávesa E)
+	if Input.is_action_just_pressed("pull"):
 		if lever_in_range:
-			lever_in_range.toggle() # Activate lever
-		elif attack_timer <= 0:
+			lever_in_range.toggle()
+
+	# Útok (akce "attack" - klávesa K)
+	if Input.is_action_just_pressed("attack"):
+		if attack_timer <= 0:
 			perform_attack()
 
 	update_animations(direction)
@@ -88,14 +99,16 @@ func take_damage(amount: int):
 	if health <= 0:
 		die()
 
-# Detection logic
-func _on_area_entered(area: Area2D):
+func _on_water_entered(area: Area2D):
 	if area.is_in_group("water"):
-		die()
+		die() 
+
+func _on_lever_entered(area: Area2D):
 	if area.is_in_group("lever"):
 		lever_in_range = area
+		print("Páka v dosahu!")
 
-func _on_area_exited(area: Area2D):
+func _on_lever_exited(area: Area2D):
 	if area == lever_in_range:
 		lever_in_range = null
 
@@ -104,7 +117,7 @@ func die():
 	is_dead = true
 	input_enabled = false
 	velocity = Vector2.ZERO
-	set_physics_process(false)
+	set_physics_process(false) 
 	sprite.play("death") 
 	
 	var death_menu = get_tree().root.find_child("DeathMenu", true, false)

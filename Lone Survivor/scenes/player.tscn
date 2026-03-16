@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://duwsmjvwd6pk8"]
+[gd_scene load_steps=19 format=3 uid="uid://duwsmjvwd6pk8"]
 
 [ext_resource type="Texture2D" uid="uid://w5ye507e4866" path="res://assets/chars.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://djfmq3e8bcmuh" path="res://scripts/player.gd" id="1_g2els"]
@@ -102,8 +102,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(39, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(34, 34)
+size = Vector2(34, 30)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 3
@@ -119,7 +121,7 @@ frame_progress = 0.885848
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(8, -2)
 scale = Vector2(3.9961, 3.54238)
-polygon = PackedVector2Array(-3.01075, 9.92571, 1.2434, 9.92571, 2.74487, 6.24449, 5, 0, 5, -5, 3, -7, -3, -7, -5, -5, -5, -1, -5, 4)
+polygon = PackedVector2Array(-3.00293, 9.88036, 1.25122, 9.88036, 2.74487, 6.24449, 5, 0, 5, -5, 3, -7, -3, -7, -5, -5, -5, -1, -5, 4)
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-4, -5)
@@ -135,8 +137,14 @@ position = Vector2(22, 15)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="HracDetekce" type="Area2D" parent="."]
-collision_mask = 3
+position = Vector2(9, -26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HracDetekce"]
-position = Vector2(9, -26)
+shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="InterakceDetekce" type="Area2D" parent="."]
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterakceDetekce"]
+position = Vector2(6, 20)
 shape = SubResource("RectangleShape2D_dqkch")
