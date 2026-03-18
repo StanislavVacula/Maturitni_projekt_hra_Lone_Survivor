@@ -3,22 +3,22 @@ extends AnimatableBody2D
 signal bridge_activated
 
 @onready var sprite = $AnimatedSprite2D
-@onready var col_vertical = $CollisionVertical
-@onready var col_horizontal = $CollisionHorizontal
+@onready var collision = $CollisionShape2D
+
+var is_active = false
 
 func _ready():
-	visible = true 
-	sprite.play("default") 
-	col_vertical.disabled = false
-	col_horizontal.disabled = true
+	rotation_degrees = 0
+	sprite.play("default")
 
 func appear():
-	if sprite.animation == "active": return 
+	if is_active: return 
+	is_active = true
 	
-	sprite.play("active")
+	print("Most padá!")
+	var tween = create_tween()
+	tween.tween_property(self, "rotation_degrees", -90.0, 1.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 	
-	col_vertical.set_deferred("disabled", true)
-	col_horizontal.set_deferred("disabled", false)
-	
+	await tween.finished
+
 	bridge_activated.emit()
-	print("Most spadl dolů!")

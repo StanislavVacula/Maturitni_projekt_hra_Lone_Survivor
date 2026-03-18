@@ -12,13 +12,17 @@ var lever_in_range: Area2D = null
 
 @onready var sprite = $AnimatedSprite2D
 @onready var attack_area = get_node_or_null("AttackArea") 
-
-# Detekce: HracDetekce = Voda (malá), InterakceDetekce = Páka (velká)
+@onready var jump_sound = $JumpSound
+@onready var punch_sound = $PunchSound
 @onready var detection_voda = $HracDetekce        
 @onready var detection_lever = $InterakceDetekce  
+@onready var health_ui = get_tree().root.find_child("HealthGUI", true, false)
 
 func _ready():
 	add_to_group("player")
+	
+	if health_ui:
+		health_ui.update_health(health)
 	
 	if detection_voda:
 		if not detection_voda.area_entered.is_connected(_on_water_entered):
@@ -41,29 +45,27 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Skok a mechanika pro propadávání lianami (Skočit + Šipka dolů)
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor() and Input.is_action_pressed("ui_down"):
 			position.y += 5 
 		elif is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			if jump_sound:
+				jump_sound.play()
 
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
 		sprite.flip_h = direction < 0
 		if attack_area:
-			# Otočíme oblast útoku podle směru chůze
 			attack_area.scale.x = -1 if direction < 0 else 1
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	# Použití páčky (akce "pull" - klávesa E)
 	if Input.is_action_just_pressed("pull"):
 		if lever_in_range:
 			lever_in_range.toggle()
 
-	# Útok (akce "attack" - klávesa K)
 	if Input.is_action_just_pressed("attack"):
 		if attack_timer <= 0:
 			perform_attack()
@@ -72,7 +74,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func update_animations(direction):
-	# Pokud zrovna probíhá animace útoku, nebudeme ji přerušovat
 	if sprite.animation == "fist" and sprite.is_playing():
 		return
 		
@@ -88,6 +89,9 @@ func perform_attack():
 	attack_timer = ATTACK_COOLDOWN 
 	sprite.play("fist") 
 	
+	if punch_sound:
+		punch_sound.play()
+	
 	var targets = attack_area.get_overlapping_bodies()
 	for target in targets:
 		if target.is_in_group("enemy") and target.has_method("take_damage"):
@@ -96,7 +100,10 @@ func perform_attack():
 func take_damage(amount: int):
 	if is_dead: return
 	health -= amount
-	# Krátké zčervenání při zásahu
+	
+	if health_ui:
+		health_ui.update_health(health)
+	
 	sprite.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1)
@@ -111,7 +118,6 @@ func _on_water_entered(area: Area2D):
 func _on_lever_entered(area: Area2D):
 	if area.is_in_group("lever"):
 		lever_in_range = area
-		print("Páka v dosahu!")
 
 func _on_lever_exited(area: Area2D):
 	if area == lever_in_range:
@@ -125,7 +131,6 @@ func die():
 	set_physics_process(false) 
 	sprite.play("death") 
 	
-	# Vyhledání menu smrti v hlavní scéně
 	var death_menu = get_tree().root.find_child("DeathMenu", true, false)
 	if death_menu:
 		death_menu.show_death()

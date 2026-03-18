@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://djwijp855w0gx"]
+[gd_scene load_steps=25 format=3 uid="uid://djwijp855w0gx"]
 
 [ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_cq4me"]
 [ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="2_6yjpi"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://xe7nk0dknujd" path="res://scenes/water_hazard.tscn" id="15_wr8iv"]
 [ext_resource type="PackedScene" uid="uid://sy6o0ayibve3" path="res://scenes/lever.tscn" id="16_e13mp"]
 [ext_resource type="PackedScene" uid="uid://cjoijm5jvsutj" path="res://scenes/bridge.tscn" id="17_vrdqu"]
+[ext_resource type="PackedScene" uid="uid://c0j6ag801xpnm" path="res://scenes/health_gui.tscn" id="18_cmspm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 friction = 1.5
@@ -824,4 +825,12 @@ position = Vector2(1202, -34)
 bridge_node = NodePath("../Bridge1")
 
 [node name="Bridge1" parent="." instance=ExtResource("17_vrdqu")]
-position = Vector2(1390, 50)
+position = Vector2(1391, 118)
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="."]
+
+[node name="HealthGUI" parent="CanvasLayer4" instance=ExtResource("18_cmspm")]
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 132.0
+offset_bottom = 50.0

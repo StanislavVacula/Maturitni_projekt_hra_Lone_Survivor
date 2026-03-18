@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjoijm5jvsutj"]
+[gd_scene load_steps=6 format=3 uid="uid://cjoijm5jvsutj"]
 
 [ext_resource type="Script" uid="uid://bq5hxcxis4da" path="res://scripts/bridge.gd" id="1_1q54l"]
 [ext_resource type="Texture2D" uid="uid://cbso0gk5q6100" path="res://assets/Bridge.png" id="1_im2sa"]
@@ -24,27 +24,18 @@ animations = [{
 }]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vwxv3"]
-a = Vector2(2, -47)
-b = Vector2(2, 69)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_yibb0"]
-a = Vector2(-59, -4)
-b = Vector2(91, -4)
+a = Vector2(3, -59)
+b = Vector2(4, 79)
 
 [node name="AnimatableBody2D" type="AnimatableBody2D"]
 script = ExtResource("1_1q54l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-74, -191)
-scale = Vector2(1.4, 1.22)
+position = Vector2(-85, -215)
+scale = Vector2(1.68, 1.42)
 sprite_frames = SubResource("SpriteFrames_yibb0")
-animation = &"active"
 centered = false
 
 [node name="CollisionVertical" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(-2, -74)
 shape = SubResource("SegmentShape2D_vwxv3")
-
-[node name="CollisionHorizontal" type="CollisionShape2D" parent="."]
-position = Vector2(-96, 5)
-shape = SubResource("SegmentShape2D_yibb0")
