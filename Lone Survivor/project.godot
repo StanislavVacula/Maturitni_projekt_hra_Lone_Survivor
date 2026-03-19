@@ -15,6 +15,10 @@ run/main_scene="uid://deeerk63lmiop"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/output_latency=5
+
 [input]
 
 fire={

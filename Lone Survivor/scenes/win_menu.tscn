@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy1vxuu1v8kug"]
+
+[ext_resource type="Script" uid="uid://c5jat11qvmmkd" path="res://scripts/win_menu.gd" id="1_ki55t"]
+
+[node name="WinMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ki55t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="NextLevelButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

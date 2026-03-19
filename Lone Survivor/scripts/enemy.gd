@@ -87,7 +87,8 @@ func shoot(dir: Vector2):
 	if sfx_shoot:
 		sfx_shoot.play()
 
-	if bullet_scene == null: return
+	if bullet_scene == null: 
+		return
 		
 	var bullet = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)

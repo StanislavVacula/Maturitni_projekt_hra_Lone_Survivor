@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://87g7bkwv6s7n"]
+
+[ext_resource type="Script" uid="uid://dp3vmwta25r4r" path="res://scripts/flag.gd" id="1_32e5v"]
+[ext_resource type="Texture2D" uid="uid://blyrtq813j2fl" path="res://assets/Waving Flag Red_sprite.png" id="1_76ss4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32e5v"]
+atlas = ExtResource("1_76ss4")
+region = Rect2(165, 0, 55, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q38m2"]
+atlas = ExtResource("1_76ss4")
+region = Rect2(55, 0, 55, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjkec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32e5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q38m2")
+}],
+"loop": true,
+"name": &"waving",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76ss4"]
+size = Vector2(32, 56)
+
+[node name="Flag" type="Area2D"]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_32e5v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["flag"]]
+sprite_frames = SubResource("SpriteFrames_tjkec")
+animation = &"waving"
+frame_progress = 0.473642
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_76ss4")
