@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://djwijp855w0gx"]
+[gd_scene load_steps=28 format=3 uid="uid://djwijp855w0gx"]
 
 [ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_cq4me"]
 [ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="2_6yjpi"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c0j6ag801xpnm" path="res://scenes/health_gui.tscn" id="18_cmspm"]
 [ext_resource type="PackedScene" uid="uid://mjagnttfy5w3" path="res://scenes/med_kit.tscn" id="19_ikfo1"]
 [ext_resource type="PackedScene" uid="uid://87g7bkwv6s7n" path="res://scenes/flag.tscn" id="20_dwom6"]
+[ext_resource type="PackedScene" uid="uid://dy1vxuu1v8kug" path="res://scenes/win_menu.tscn" id="21_bl2xa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 friction = 1.5
@@ -857,3 +858,7 @@ position = Vector2(1705, 70)
 
 [node name="Flag" parent="." instance=ExtResource("20_dwom6")]
 position = Vector2(2114, 89)
+
+[node name="CanvasLayer5" type="CanvasLayer" parent="."]
+
+[node name="WinMenu" parent="CanvasLayer5" instance=ExtResource("21_bl2xa")]
