@@ -59,7 +59,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	if Input.is_action_just_pressed("pull") and lever_in_range:
-		lever_in_range.toggle()
+		if lever_in_range.has_method("toggle"):
+			lever_in_range.toggle()
 
 	if Input.is_action_just_pressed("attack") and attack_timer <= 0:
 		perform_attack()
@@ -110,7 +111,7 @@ func heal(amount: int) -> bool:
 	health = min(health + amount, max_health)
 	if health_ui: health_ui.update_health(health)
 	var tween = create_tween()
-	tween.tween_property(sprite, "modulate", Color(0, 5, 0), 0.1)
+	tween.tween_property(sprite, "modulate", Color(0, 1, 0), 0.1)
 	tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.1)
 	return true
 
@@ -128,6 +129,7 @@ func die():
 	is_dead = true
 	input_enabled = false
 	velocity = Vector2.ZERO
+	if health_ui: health_ui.update_health(0)
 	sprite.play("death") 
 	var death_menu = get_tree().root.find_child("DeathMenu", true, false)
 	if death_menu: death_menu.show_death()
