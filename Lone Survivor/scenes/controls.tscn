@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv0avb84513cj"]
+
+[ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="1_5tddo"]
+[ext_resource type="Script" uid="uid://dyrktvcb27qxk" path="res://scripts/controls.gd" id="1_cywyo"]
+[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="1_i2gav"]
+
+[node name="ControlMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 648.0
+script = ExtResource("1_cywyo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.0
+offset_top = -324.0
+offset_right = 581.0
+offset_bottom = 761.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.6)
+texture = ExtResource("1_5tddo")
+expand_mode = 1
+
+[node name="AllControls" type="Label" parent="."]
+layout_mode = 2
+offset_left = 383.0
+offset_top = 273.0
+offset_right = 783.0
+offset_bottom = 422.0
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_i2gav")
+theme_override_font_sizes/font_size = 50
+text = "MOVE:         ARROWS 
+JUMP:         SPACE 
+ATTACK:       K KEY
+INTERACT:     E KEY"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.0
+offset_top = -424.0
+offset_right = 577.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlsText" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_i2gav")
+theme_override_font_sizes/font_size = 100
+text = "CONTROLS"
+
+[node name="BackToMenuButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.5
+offset_top = 129.5
+offset_right = 260.5
+offset_bottom = 206.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_i2gav")
+theme_override_font_sizes/font_size = 100
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
