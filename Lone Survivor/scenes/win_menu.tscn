@@ -113,7 +113,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_7shsi")
 theme_override_font_sizes/font_size = 75
 text = "NEXT MISSION"
-flat = true
 
 [node name="MissionCompleted" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dmaew")
