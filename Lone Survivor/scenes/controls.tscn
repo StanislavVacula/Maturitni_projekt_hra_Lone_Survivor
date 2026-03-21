@@ -37,10 +37,11 @@ offset_bottom = 422.0
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_i2gav")
 theme_override_font_sizes/font_size = 50
-text = "MOVE:         ARROWS 
-JUMP:         SPACE 
-ATTACK:       K KEY
-INTERACT:     E KEY"
+text = "MOVE:        ARROWS 
+JUMP:        SPACE 
+ATTACK:      K KEY
+INTERACT:    E KEY
+PAUSE:       ESC KEY"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -73,9 +74,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -260.5
-offset_top = 129.5
+offset_top = 140.5
 offset_right = 260.5
-offset_bottom = 206.5
+offset_bottom = 217.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_i2gav")
