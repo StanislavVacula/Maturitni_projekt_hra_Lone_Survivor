@@ -18,18 +18,12 @@ texture = ExtResource("2_ekxnf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 1151.0
-offset_bottom = 654.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 7.0
+offset_top = -52.0
+offset_right = 1156.0
+offset_bottom = 599.0
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -40,6 +34,14 @@ theme_override_font_sizes/font_size = 100
 text = "PLAY
 "
 
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 100
+text = "OPTIONS"
+
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -47,3 +49,24 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 100
 text = "QUIT"
+
+[node name="OptionsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="OptionsPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "text"
+
+[node name="BackButton" type="Button" parent="OptionsPanel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back to menu"
+
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/BackButton" to="." method="_on_back_button_pressed"]

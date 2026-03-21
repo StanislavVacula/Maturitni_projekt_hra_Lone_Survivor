@@ -1,7 +1,5 @@
 extends Area2D
 
-const HEAL_AMOUNT := 1
-
 @onready var sfx_pickup = $PickupSound
 
 func _ready():
@@ -10,6 +8,6 @@ func _ready():
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		if body.has_method("heal"):
-			var result = body.heal(HEAL_AMOUNT)
+			var result = body.heal(body.max_health)
 			if result == true:
 				queue_free()
