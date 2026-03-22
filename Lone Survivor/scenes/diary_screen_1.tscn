@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsxi3uhiqfnt3"]
+
+[ext_resource type="Script" uid="uid://bdxwlnm3k78vo" path="res://scripts/diary_screen_1.gd" id="1_g0idq"]
+[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="2_r84tf"]
+[ext_resource type="AudioStream" uid="uid://ph7cgp5hylm5" path="res://sounds/TypeWritter.wav" id="3_r84tf"]
+
+[node name="DiaryScreen1" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_g0idq")
+next_level_path = "res://scenes/tutorial.tscn"
+diary_text = "The helicopter was hit and everything went black. I woke up in the burning wreckage of the helicopter.
+
+I checked the others... Jackson, Miller, the pilot... they are all dead. I am the only one who survived the crash.
+
+My radio is broken, but I know there is a U.S. base about 20 miles East. I have to move now. If I stay here, enemy patrols will find me. It is just me now. One goal: Survive."
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Heading" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 664.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_r84tf")
+theme_override_font_sizes/font_size = 50
+text = "AUGUST 12th, 1944
+DAY 1: THE CRASH"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -492.0
+offset_top = -324.0
+offset_right = 510.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_r84tf")
+theme_override_font_sizes/normal_font_size = 40
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="."]
+self_modulate = Color(0.203922, 0.709804, 0.345098, 1)
+layout_mode = 0
+offset_left = 664.0
+offset_top = 519.0
+offset_right = 1141.0
+offset_bottom = 596.0
+theme_override_fonts/font = ExtResource("2_r84tf")
+theme_override_font_sizes/font_size = 50
+text = "PRESS HERE TO CONTINUE"
+
+[node name="TypeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_r84tf")
+pitch_scale = 4.0
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

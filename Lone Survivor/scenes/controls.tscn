@@ -31,9 +31,9 @@ expand_mode = 1
 [node name="AllControls" type="Label" parent="."]
 layout_mode = 2
 offset_left = 383.0
-offset_top = 273.0
-offset_right = 783.0
-offset_bottom = 422.0
+offset_top = 159.0
+offset_right = 1089.0
+offset_bottom = 460.0
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_i2gav")
 theme_override_font_sizes/font_size = 50
@@ -48,15 +48,15 @@ PLATFORM:        ARROW DOWN + SPACE
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.305
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.305
 offset_left = -577.0
-offset_top = -424.0
+offset_top = -410.64
 offset_right = 577.0
-offset_bottom = 224.0
+offset_bottom = 237.36
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -77,9 +77,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -260.5
-offset_top = 231.5
+offset_top = 168.5
 offset_right = 260.5
-offset_bottom = 308.5
+offset_bottom = 245.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_i2gav")

@@ -4,7 +4,7 @@ extends Control
 @onready var quit_button = $VBoxContainer/QuitButton
 @onready var controls_button = $VBoxContainer/ControlsButton
 
-@export var game_scene_path: String = "res://scenes/tutorial.tscn" 
+@export var game_scene_path: String = "res://scenes/diary_screen_1.tscn" 
 
 func _ready():
 	play_button.pressed.connect(_on_play_pressed)

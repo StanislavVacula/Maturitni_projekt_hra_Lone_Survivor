@@ -26,4 +26,4 @@ func _on_quit_button_pressed():
 func _on_next_mission_button_pressed() -> void:
 	get_tree().paused = false
 	
-	var err = get_tree().change_scene_to_file("res://scenes/mission2.tscn")
+	var err = get_tree().change_scene_to_file("res://scenes/diary_screen_2.tscn")
