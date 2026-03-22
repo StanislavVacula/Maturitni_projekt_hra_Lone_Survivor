@@ -1,5 +1,5 @@
 extends Area2D
-@export var speed := 600.0
+@export var speed := 500
 @export var lifetime := 3.0
 
 var direction: Vector2 = Vector2.ZERO

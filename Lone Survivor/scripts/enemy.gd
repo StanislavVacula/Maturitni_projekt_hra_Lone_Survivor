@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 const SPEED := 50.0
-const SHOOT_COOLDOWN := 1.5 
 const RAY_LENGTH := 400.0
 const PATROL_DURATION := 2.0
 
 @export var bullet_scene: PackedScene
+@export var shoot_interval: float = 3.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var raycast: RayCast2D = $RayCast2D
@@ -81,7 +81,7 @@ func handle_combat(dir: Vector2):
 	
 	if shoot_timer <= 0:
 		shoot(dir)
-		shoot_timer = SHOOT_COOLDOWN
+		shoot_timer = shoot_interval
 
 func shoot(dir: Vector2):
 	if sfx_shoot:

@@ -1,31 +1,25 @@
-[gd_scene load_steps=29 format=3 uid="uid://dalfnkeswxfng"]
+[gd_scene load_steps=23 format=3 uid="uid://wqi1h4s575l2"]
 
-[ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_up81i"]
-[ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="2_hw1w4"]
-[ext_resource type="Script" uid="uid://s1exvqsr4rtr" path="res://scripts/camera_2d.gd" id="3_wix3p"]
-[ext_resource type="PackedScene" uid="uid://chkus4xclycai" path="res://scenes/enemy.tscn" id="5_l1f0f"]
-[ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="5_u1jdg"]
-[ext_resource type="Texture2D" uid="uid://dnjm0hp680fle" path="res://assets/TileSet/Nature_environment_01.png" id="6_43y5h"]
-[ext_resource type="Texture2D" uid="uid://dyew40wgnpghq" path="res://assets/old_growth_tileset-export.png" id="7_jup4m"]
-[ext_resource type="Texture2D" uid="uid://ciyeib2wemx5o" path="res://assets/TileSet/Nature_props_01.png" id="8_qjbo1"]
-[ext_resource type="PackedScene" uid="uid://mkk0cxr05j34" path="res://scenes/liana.tscn" id="12_xjdw8"]
-[ext_resource type="PackedScene" uid="uid://bpu3ed1xtao0c" path="res://scenes/pause_menu.tscn" id="13_dggll"]
-[ext_resource type="PackedScene" uid="uid://sy6o0ayibve3" path="res://scenes/lever.tscn" id="13_eeimi"]
-[ext_resource type="PackedScene" uid="uid://4xh7w3vdl50l" path="res://scenes/death_menu.tscn" id="14_2j4ad"]
-[ext_resource type="PackedScene" uid="uid://xe7nk0dknujd" path="res://scenes/water_hazard.tscn" id="14_42o1g"]
-[ext_resource type="PackedScene" uid="uid://cjoijm5jvsutj" path="res://scenes/bridge.tscn" id="15_nvm3s"]
-[ext_resource type="Script" uid="uid://b8sh0635kuxhm" path="res://scripts/back_track_trigger.gd" id="16_3jk3a"]
-[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="17_l1f0f"]
-[ext_resource type="PackedScene" uid="uid://c0j6ag801xpnm" path="res://scenes/health_gui.tscn" id="18_xu7t4"]
-[ext_resource type="PackedScene" uid="uid://mjagnttfy5w3" path="res://scenes/med_kit.tscn" id="19_ju01i"]
-[ext_resource type="PackedScene" uid="uid://87g7bkwv6s7n" path="res://scenes/flag.tscn" id="20_ki75t"]
-[ext_resource type="PackedScene" uid="uid://dy1vxuu1v8kug" path="res://scenes/win_menu.tscn" id="21_lstt4"]
+[ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_h6h8e"]
+[ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="2_n1j4q"]
+[ext_resource type="PackedScene" uid="uid://duwsmjvwd6pk8" path="res://scenes/player.tscn" id="3_mp1cl"]
+[ext_resource type="Script" uid="uid://s1exvqsr4rtr" path="res://scripts/camera_2d.gd" id="4_omsmw"]
+[ext_resource type="PackedScene" uid="uid://chkus4xclycai" path="res://scenes/enemy.tscn" id="5_7284e"]
+[ext_resource type="Texture2D" uid="uid://dnjm0hp680fle" path="res://assets/TileSet/Nature_environment_01.png" id="6_00svc"]
+[ext_resource type="Texture2D" uid="uid://dyew40wgnpghq" path="res://assets/old_growth_tileset-export.png" id="7_h0c1i"]
+[ext_resource type="Texture2D" uid="uid://ciyeib2wemx5o" path="res://assets/TileSet/Nature_props_01.png" id="8_4i25d"]
+[ext_resource type="PackedScene" uid="uid://bpu3ed1xtao0c" path="res://scenes/pause_menu.tscn" id="9_pt8gd"]
+[ext_resource type="PackedScene" uid="uid://4xh7w3vdl50l" path="res://scenes/death_menu.tscn" id="10_8c3fi"]
+[ext_resource type="PackedScene" uid="uid://c0j6ag801xpnm" path="res://scenes/health_gui.tscn" id="11_d4wkh"]
+[ext_resource type="PackedScene" uid="uid://dy1vxuu1v8kug" path="res://scenes/win_menu.tscn" id="12_t2tpn"]
+[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="17_afyr0"]
+[ext_resource type="Script" uid="uid://b8sh0635kuxhm" path="res://scripts/back_track_trigger.gd" id="18_kklv5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 friction = 1.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
-texture = ExtResource("6_43y5h")
+texture = ExtResource("6_00svc")
 margins = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
@@ -545,7 +539,7 @@ texture_region_size = Vector2i(32, 32)
 32:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wr8iv"]
-texture = ExtResource("7_jup4m")
+texture = ExtResource("7_h0c1i")
 margins = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -666,7 +660,7 @@ sources/0 = SubResource("TileSetAtlasSource_p57ef")
 sources/2 = SubResource("TileSetAtlasSource_wr8iv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nlqja"]
-texture = ExtResource("8_qjbo1")
+texture = ExtResource("8_4i25d")
 1:1/size_in_atlas = Vector2i(3, 2)
 1:1/0 = 0
 1:4/size_in_atlas = Vector2i(3, 1)
@@ -728,7 +722,7 @@ size = Vector2(94, 166)
 
 [node name="Mission2" type="Node2D"]
 position = Vector2(577, 324)
-script = ExtResource("1_up81i")
+script = ExtResource("1_h6h8e")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
@@ -743,10 +737,10 @@ offset_top = -488.0
 offset_right = 14005.0
 offset_bottom = 536.0
 scale = Vector2(1, 1.3)
-texture = ExtResource("5_u1jdg")
+texture = ExtResource("2_n1j4q")
 stretch_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("2_hw1w4")]
+[node name="Player" parent="." instance=ExtResource("3_mp1cl")]
 position = Vector2(-242, -45)
 collision_layer = 2
 collision_mask = 7
@@ -757,9 +751,9 @@ zoom = Vector2(1, 0.934)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
-script = ExtResource("3_wix3p")
+script = ExtResource("4_omsmw")
 
-[node name="Enemy" parent="." instance=ExtResource("5_l1f0f")]
+[node name="Enemy" parent="." instance=ExtResource("5_7284e")]
 position = Vector2(1088, -47)
 shoot_interval = 2.0
 
@@ -784,11 +778,11 @@ layer_0/tile_data = PackedInt32Array(-65566, 786432, 6, -65577, 1114112, 6, -655
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer3" instance=ExtResource("13_dggll")]
+[node name="PauseMenu" parent="CanvasLayer3" instance=ExtResource("9_pt8gd")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
-[node name="DeathMenu" parent="CanvasLayer2" instance=ExtResource("14_2j4ad")]
+[node name="DeathMenu" parent="CanvasLayer2" instance=ExtResource("10_8c3fi")]
 offset_left = -1.0
 offset_top = -2.0
 offset_right = 1.0
@@ -796,7 +790,7 @@ offset_bottom = 1.0
 
 [node name="CanvasLayer4" type="CanvasLayer" parent="."]
 
-[node name="HealthGUI" parent="CanvasLayer4" instance=ExtResource("18_xu7t4")]
+[node name="HealthGUI" parent="CanvasLayer4" instance=ExtResource("11_d4wkh")]
 offset_left = 13.0
 offset_top = 7.0
 offset_right = 132.0
@@ -805,36 +799,7 @@ offset_bottom = 50.0
 [node name="CanvasLayer5" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="WinMenu" parent="CanvasLayer5" instance=ExtResource("21_lstt4")]
-
-[node name="LianaPlatform" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(161, -28)
-
-[node name="LianaPlatform2" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(49, -1)
-
-[node name="LianaPlatform4" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(267, -59)
-
-[node name="LianaPlatform3" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(413, -3)
-
-[node name="LianaPlatform5" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(178, -108)
-
-[node name="LianaPlatform6" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(71, -139)
-
-[node name="Lever" parent="." node_paths=PackedStringArray("bridge_node") instance=ExtResource("13_eeimi")]
-position = Vector2(75, -163)
-bridge_node = NodePath("../Bridge1")
-
-[node name="water_hazard" parent="." instance=ExtResource("14_42o1g")]
-position = Vector2(47, 82)
-scale = Vector2(5, 1)
-
-[node name="Bridge1" parent="." instance=ExtResource("15_nvm3s")]
-position = Vector2(562, -10)
+[node name="WinMenu" parent="CanvasLayer5" instance=ExtResource("12_t2tpn")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -844,14 +809,14 @@ offset_top = 179.0
 offset_right = 986.0
 offset_bottom = 234.0
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("17_l1f0f")
+theme_override_fonts/font = ExtResource("17_afyr0")
 theme_override_font_sizes/font_size = 33
 text = "I can’t go back. I need to get to the military base."
 
 [node name="BackTrackTrigger" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 15
-script = ExtResource("16_3jk3a")
+script = ExtResource("18_kklv5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackTrackTrigger"]
 position = Vector2(-536, -95)
@@ -863,92 +828,3 @@ position = Vector2(-536, -95)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackTrackTrigger/StaticBody2D"]
 position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_3jk3a")
-
-[node name="LianaPlatform7" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1614, 4)
-
-[node name="LianaPlatform8" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1731, -25)
-
-[node name="LianaPlatform9" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1834, -57)
-
-[node name="LianaPlatform10" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1752, -103)
-
-[node name="LianaPlatform11" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1841, -144)
-
-[node name="LianaPlatform12" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1754, -189)
-
-[node name="LianaPlatform13" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1639, -209)
-
-[node name="MedKit" parent="." instance=ExtResource("19_ju01i")]
-position = Vector2(1640, -228)
-
-[node name="LianaPlatform14" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1954, -28)
-
-[node name="LianaPlatform15" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2074, -7)
-
-[node name="LianaPlatform16" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2187, -38)
-
-[node name="LianaPlatform17" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2302, 6)
-
-[node name="LianaPlatform18" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2405, -21)
-
-[node name="LianaPlatform19" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2524, -16)
-
-[node name="Enemy2" parent="." instance=ExtResource("5_l1f0f")]
-position = Vector2(3188, -44)
-shoot_interval = 2.0
-
-[node name="Enemy3" parent="." instance=ExtResource("5_l1f0f")]
-position = Vector2(3677, -45)
-shoot_interval = 2.0
-
-[node name="Bridge2" parent="." instance=ExtResource("15_nvm3s")]
-position = Vector2(4178, -10)
-
-[node name="LianaPlatform20" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(4002, -60)
-
-[node name="LianaPlatform21" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(3899, -100)
-
-[node name="LianaPlatform22" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(3796, -131)
-
-[node name="Lever2" parent="." node_paths=PackedStringArray("bridge_node") instance=ExtResource("13_eeimi")]
-position = Vector2(3801, -157)
-bridge_node = NodePath("../Bridge2")
-
-[node name="LianaPlatform23" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(3669, -150)
-
-[node name="MedKit2" parent="." instance=ExtResource("19_ju01i")]
-position = Vector2(3672, -169)
-
-[node name="water_hazard2" parent="." instance=ExtResource("14_42o1g")]
-position = Vector2(1672, 82)
-scale = Vector2(10, 1)
-
-[node name="water_hazard3" parent="." instance=ExtResource("14_42o1g")]
-position = Vector2(4085, 50)
-
-[node name="LianaPlatform24" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(4473, -54)
-
-[node name="Enemy4" parent="." instance=ExtResource("5_l1f0f")]
-position = Vector2(4821, -142)
-
-[node name="Flag" parent="." instance=ExtResource("20_ki75t")]
-position = Vector2(5169, -136)
-next_level_path = "res://scenes/diary_screen_3"
