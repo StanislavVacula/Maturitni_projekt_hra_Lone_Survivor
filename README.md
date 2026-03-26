@@ -60,5 +60,6 @@ Aktuální verze obsahuje komplexní tutoriálovou úroveň:
 
 ### Pro hráče (Build)
 1. Přejděte do sekce [Releases](../../releases).
-2. Stáhněte si archiv `LoneSurvivor_v1.zip`.
-3. Rozbalte a spusťte `LoneSurvivor.exe`.
+2. Stáhněte si soubory Lone Survivor.exe a Lone Survivor.pck
+3. Soubory uložte do stejné složky (např. LoneSurvivor)
+4. Spustťe soubor Lone Survivor.exe
