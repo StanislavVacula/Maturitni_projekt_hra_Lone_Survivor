@@ -1,11 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://drwqujtq4v08q"]
+[gd_scene load_steps=6 format=3 uid="uid://drwqujtq4v08q"]
 
 [ext_resource type="Texture2D" uid="uid://d1aqn65ndde7" path="res://assets/fallen_helicopter.png" id="1_4loa8"]
+[ext_resource type="Script" uid="uid://b2c2hp8kv7qvj" path="res://scenes/helicopter.gd" id="1_wncid"]
+[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="2_xmuea"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmuea"]
 radius = 138.232
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4loa8"]
+radius = 139.946
+
 [node name="Helicopter" type="StaticBody2D"]
+script = ExtResource("1_wncid")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -236.0
+offset_top = -225.0
+offset_right = 910.0
+offset_bottom = -70.0
+theme_override_fonts/font = ExtResource("2_xmuea")
+theme_override_font_sizes/font_size = 35
+text = "The remains of the helicopter. Everyone else is inside. 
+     I must honor their memory by finding the base."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
@@ -19,3 +36,14 @@ texture = ExtResource("1_4loa8")
 z_index = -1
 position = Vector2(-27, 42)
 shape = SubResource("CircleShape2D_xmuea")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="InteractArea" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-26, 38)
+shape = SubResource("CircleShape2D_4loa8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
