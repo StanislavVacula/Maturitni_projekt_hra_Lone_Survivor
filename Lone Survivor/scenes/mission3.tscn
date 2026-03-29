@@ -875,9 +875,11 @@ scale = Vector2(5, 1)
 
 [node name="Enemy3" parent="." instance=ExtResource("5_rdm8k")]
 position = Vector2(2889, 48)
+shoot_interval = 2.0
 
 [node name="Enemy4" parent="." instance=ExtResource("5_rdm8k")]
 position = Vector2(3081, 49)
+shoot_interval = 2.0
 
 [node name="LianaPlatform7" parent="." instance=ExtResource("16_t16jf")]
 position = Vector2(3674, 5)
@@ -946,6 +948,7 @@ position = Vector2(4465, 14)
 
 [node name="Enemy5" parent="." instance=ExtResource("5_rdm8k")]
 position = Vector2(4758, -16)
+shoot_interval = 2.0
 
 [node name="Flag" parent="." instance=ExtResource("20_h6h8e")]
 position = Vector2(5477, -41)

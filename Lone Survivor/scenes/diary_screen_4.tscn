@@ -10,7 +10,7 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("1_k6wtd")
-next_level_path = "res://scenes/mission3.tscn"
+next_level_path = "res://scenes/mission4.tscn"
 diary_text = "I'm almost there. The base isn't just a dot on the map anymore; it's right there in front of me. 
 
 I’ve survived everything this godforsaken jungle threw at me. In a few hours, all of this will be nothing but a bad memory.
@@ -35,8 +35,8 @@ offset_bottom = 664.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_tan7v")
 theme_override_font_sizes/font_size = 50
-text = "AUGUST 14, 1944
-DAY 3: EVERY STEP CLOSER TO THE GOAL"
+text = "AUGUST 15, 1973
+DAY 4: ALMOST THERE"
 horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
