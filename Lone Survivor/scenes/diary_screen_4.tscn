@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxnpwq0lhajoh"]
+[gd_scene load_steps=4 format=3 uid="uid://dt8yl2dxuff4j"]
 
-[ext_resource type="Script" uid="uid://bkavnbg01kmxa" path="res://scripts/diary_screen_2.gd" id="1_57vjm"]
-[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="2_nsbuw"]
-[ext_resource type="AudioStream" uid="uid://ph7cgp5hylm5" path="res://sounds/TypeWritter.wav" id="3_ygvtd"]
+[ext_resource type="Script" uid="uid://bkavnbg01kmxa" path="res://scripts/diary_screen_2.gd" id="1_k6wtd"]
+[ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="2_tan7v"]
+[ext_resource type="AudioStream" uid="uid://ph7cgp5hylm5" path="res://sounds/TypeWritter.wav" id="3_ec06g"]
 
-[node name="DiaryScreen3" type="Control"]
+[node name="DiaryScreen4" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-script = ExtResource("1_57vjm")
+script = ExtResource("1_k6wtd")
 next_level_path = "res://scenes/mission3.tscn"
-diary_text = "I can smell the sea now. The coast is very close, but my body is exhausted. 
+diary_text = "I'm almost there. The base isn't just a dot on the map anymore; it's right there in front of me. 
 
-Every step is painful. My hands are bloody and bruised from all the fighting, but I have no other choice.
+I’ve survived everything this godforsaken jungle threw at me. In a few hours, all of this will be nothing but a bad memory.
 
-But there is hope. My radio picked up a signal from the military base. They are waiting for me. I am so close. I must stay strong and finish this. I will not die in these ruins. I am going home."
+I’m going home. I believe it now... more than ever."
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -33,7 +33,7 @@ offset_top = 16.0
 offset_right = 576.0
 offset_bottom = 664.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_nsbuw")
+theme_override_fonts/font = ExtResource("2_tan7v")
 theme_override_font_sizes/font_size = 50
 text = "AUGUST 14, 1944
 DAY 3: EVERY STEP CLOSER TO THE GOAL"
@@ -52,7 +52,7 @@ offset_right = 510.0
 offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_nsbuw")
+theme_override_fonts/normal_font = ExtResource("2_tan7v")
 theme_override_font_sizes/normal_font_size = 40
 vertical_alignment = 1
 
@@ -63,12 +63,12 @@ offset_left = 664.0
 offset_top = 519.0
 offset_right = 1141.0
 offset_bottom = 596.0
-theme_override_fonts/font = ExtResource("2_nsbuw")
+theme_override_fonts/font = ExtResource("2_tan7v")
 theme_override_font_sizes/font_size = 50
 text = "PRESS HERE TO CONTINUE"
 
 [node name="TypeSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ygvtd")
+stream = ExtResource("3_ec06g")
 pitch_scale = 3.0
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

@@ -122,7 +122,7 @@ frame_progress = 0.341059
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(8, -2)
 scale = Vector2(3.9961, 3.54238)
-polygon = PackedVector2Array(-3.00293, 9.88036, 1.25122, 9.88036, 2.74487, 6.24449, 5, 0, 5, -5, 3, -7, -3, -7, -5, -5, -5, -1, -5, 4)
+polygon = PackedVector2Array(-3.00293, 9.88036, -1.00098, 9.88036, 1.25122, 5.08133, 3.50342, 0.282296, 3.75366, -5.08133, 3, -7, -3, -7, -5, -5, -5, -1, -5, 4)
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-4, -5)

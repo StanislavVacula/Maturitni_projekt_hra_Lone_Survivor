@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chkus4xclycai" path="res://scenes/enemy.tscn" id="5_l1f0f"]
 [ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="5_u1jdg"]
 [ext_resource type="Texture2D" uid="uid://dnjm0hp680fle" path="res://assets/TileSet/Nature_environment_01.png" id="6_43y5h"]
-[ext_resource type="Texture2D" uid="uid://dyew40wgnpghq" path="res://assets/old_growth_tileset-export.png" id="7_jup4m"]
+[ext_resource type="Texture2D" uid="uid://mtdp7cdj30ee" path="res://assets/old_growth_tileset-export.png" id="7_jup4m"]
 [ext_resource type="Texture2D" uid="uid://ciyeib2wemx5o" path="res://assets/TileSet/Nature_props_01.png" id="8_qjbo1"]
 [ext_resource type="PackedScene" uid="uid://mkk0cxr05j34" path="res://scenes/liana.tscn" id="12_xjdw8"]
 [ext_resource type="PackedScene" uid="uid://bpu3ed1xtao0c" path="res://scenes/pause_menu.tscn" id="13_dggll"]
@@ -951,4 +951,4 @@ position = Vector2(4821, -142)
 
 [node name="Flag" parent="." instance=ExtResource("20_ki75t")]
 position = Vector2(5169, -136)
-next_level_path = "res://scenes/diary_screen_3"
+next_level_path = "uid://bxnpwq0lhajoh"
