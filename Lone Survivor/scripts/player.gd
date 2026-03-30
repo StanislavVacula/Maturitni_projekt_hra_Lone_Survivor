@@ -133,3 +133,7 @@ func die():
 	sprite.play("death") 
 	var death_menu = get_tree().root.find_child("DeathMenu", true, false)
 	if death_menu: death_menu.show_death()
+
+func hide_hud():
+	if health_ui:
+		health_ui.hide()

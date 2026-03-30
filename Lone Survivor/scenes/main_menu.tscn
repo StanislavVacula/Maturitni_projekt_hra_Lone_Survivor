@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://deeerk63lmiop"]
+[gd_scene load_steps=5 format=3 uid="uid://deeerk63lmiop"]
 
 [ext_resource type="Script" uid="uid://c33go3684q26t" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://br8kllnobsdyi" path="res://assets/logo_hry.png" id="2_ekxnf"]
 [ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="3_bqqt6"]
+[ext_resource type="AudioStream" uid="uid://ce8w4xpt6s44g" path="res://sounds/main_menu_sound.mp3" id="4_wu84c"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -49,5 +50,9 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 100
 text = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wu84c")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]

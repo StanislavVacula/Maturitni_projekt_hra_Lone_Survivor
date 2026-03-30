@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://8kekdfaeb1h6"]
+
+[ext_resource type="Texture2D" uid="uid://bd5oppuip6qej" path="res://assets/Waving_american_flagpng.png" id="1_awk3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8581"]
+size = Vector2(20, 105)
+
+[node name="American_Flag" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_awk3p")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_q8581")

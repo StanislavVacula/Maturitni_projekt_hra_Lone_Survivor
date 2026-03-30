@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var label = $FinalText
+@onready var label = $CanvasLayer/FinalText
 
 func _ready():
 	body_entered.connect(_on_body_entered)

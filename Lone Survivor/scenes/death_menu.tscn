@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://4xh7w3vdl50l"]
+[gd_scene load_steps=9 format=3 uid="uid://4xh7w3vdl50l"]
 
 [ext_resource type="Script" uid="uid://dwccod64bad2g" path="res://scripts/death_menu.gd" id="1_gm7js"]
-[ext_resource type="Shader" uid="uid://cu82jpf7puekg" path="res://scenes/death_menu.gdshader" id="1_latkk"]
+[ext_resource type="Shader" uid="uid://cu82jpf7puekg" path="res://death_menu.gdshader" id="1_latkk"]
 [ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="3_ox6ks"]
+[ext_resource type="AudioStream" uid="uid://dyepknlj0ek48" path="res://sounds/death_sound.mp3" id="4_vqs20"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gm7js"]
 shader = ExtResource("1_latkk")
@@ -233,6 +234,10 @@ flat = true
 libraries = {
 &"": SubResource("AnimationLibrary_vqs20")
 }
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vqs20")
+volume_db = -8.357
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

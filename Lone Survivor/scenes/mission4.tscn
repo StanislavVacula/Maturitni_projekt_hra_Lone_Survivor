@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cxfkodt18itu8"]
+[gd_scene load_steps=40 format=3 uid="uid://cxfkodt18itu8"]
 
 [ext_resource type="Script" uid="uid://dhqli7lsrdqdg" path="res://scripts/tutorial.gd" id="1_y0tnd"]
 [ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="2_2pufs"]
@@ -22,6 +22,9 @@
 [ext_resource type="Script" uid="uid://gr4pbk7fmilk" path="res://scripts/arrival_trigger.gd" id="20_y0tnd"]
 [ext_resource type="Script" uid="uid://bwdbjlv4e2nrv" path="res://scripts/sniper_zone.gd" id="21_0k133"]
 [ext_resource type="AudioStream" uid="uid://tkygoc80faen" path="res://sounds/shootSound.mp3" id="22_e5eow"]
+[ext_resource type="Shader" uid="uid://drv6we6ccatyb" path="res://scripts/mission4.gdshader" id="23_e5eow"]
+[ext_resource type="PackedScene" uid="uid://8kekdfaeb1h6" path="res://scenes/american_flag.tscn" id="24_7wly3"]
+[ext_resource type="AudioStream" uid="uid://wjaygqw5ed4s" path="res://sounds/final_scene_sound.mp3" id="24_plrwt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 friction = 1.5
@@ -734,7 +737,134 @@ size = Vector2(97.5, 75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wly3"]
 size = Vector2(20, 80.5)
 
-[node name="Mission2" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7wly3"]
+shader = ExtResource("23_e5eow")
+shader_parameter/blur_amount = 0.0
+
+[sub_resource type="Animation" id="Animation_7wly3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QuoteText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.43, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FinalSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e5eow"]
+resource_name = "final_death_sequence"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.13333, 4.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QuoteText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.03333, 5.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.43, 0, 0, 0), Color(0.43, 0, 0, 0.707), Color(0.43, 0, 0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_ending_sequence"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FinalSound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.97),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_plrwt"]
+_data = {
+&"RESET": SubResource("Animation_7wly3"),
+&"final_death_sequence": SubResource("Animation_e5eow")
+}
+
+[node name="Mission4" type="Node2D"]
 position = Vector2(577, 324)
 script = ExtResource("1_y0tnd")
 
@@ -755,7 +885,7 @@ texture = ExtResource("2_2pufs")
 stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_0k133")]
-position = Vector2(7000, -210)
+position = Vector2(-242, -143)
 collision_layer = 2
 collision_mask = 7
 
@@ -782,21 +912,13 @@ layer_0/tile_data = PackedInt32Array(131060, 1048576, 5, 262132, 1048576, 5, 393
 z_index = -1
 tile_set = SubResource("TileSet_0epgs")
 format = 2
-layer_0/tile_data = PackedInt32Array(-458793, 786432, 6, -458787, 1114112, 6, -458762, 1114112, 6, -458778, 786432, 6, -196613, 393216, 7, -196609, 1441792, 7, -262127, 589824, 6, 88, 393216, 7, 92, 2097152, 7, -262143, 262144, 14, -262123, 262144, 14, 108, 786432, 6, 115, 1114112, 6, 120, 393216, 7, 262282, 393216, 7, 327804, 262144, 6, 262290, 1114112, 6, 204, 1114112, 6, 178, 786432, 6, 157, 1441792, 7, 163, 1966080, 7, 193, 786432, 6, 186, 786432, 6, -130856, 1114112, 6, -130840, 786432, 6, -130831, 393216, 7, -392967, 786432, 6, -392969, 262144, 14, -392957, 589824, 6, -392942, 589824, 6, -392950, 393216, 7, -392927, 393216, 7, -392935, 262144, 14, -392921, 786432, 6, -655054, 1114112, 6, -655041, 786432, 6, -655033, 393216, 7, -523887, 393216, 7, -523871, 1114112, 6, -523883, 1441792, 7, -786004, 1114112, 6, -392877, 1114112, 6, -392871, 262144, 14, -786002, 262144, 14)
+layer_0/tile_data = PackedInt32Array(-458793, 786432, 6, -458787, 1114112, 6, -458762, 1114112, 6, -458778, 786432, 6, -196613, 393216, 7, -196609, 1441792, 7, -262127, 589824, 6, 88, 393216, 7, 92, 2097152, 7, -262143, 262144, 14, -262123, 262144, 14, 108, 786432, 6, 115, 1114112, 6, 120, 393216, 7, 262282, 393216, 7, 327804, 262144, 6, 262290, 1114112, 6, 204, 1114112, 6, 178, 786432, 6, 157, 1441792, 7, 163, 1966080, 7, 193, 786432, 6, 186, 786432, 6, -130856, 1114112, 6, -130840, 786432, 6, -130831, 393216, 7, -392967, 786432, 6, -392969, 262144, 14, -392957, 589824, 6, -392942, 589824, 6, -392950, 393216, 7, -392927, 393216, 7, -392935, 262144, 14, -392921, 786432, 6, -655054, 1114112, 6, -655041, 786432, 6, -655033, 393216, 7, -523887, 393216, 7, -523871, 1114112, 6, -523883, 1441792, 7, -786004, 1114112, 6, -392877, 1114112, 6, -392871, 262144, 14, -786002, 262144, 14, -785989, 1114112, 6, -785983, 1441792, 7, -785955, 1441792, 7, -785940, 1966080, 7, -785945, 2097152, 7, -785949, 1114112, 6, -785960, 393216, 7, -785935, 393216, 7, -785968, 786432, 6, -785975, 1114112, 6)
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer3" instance=ExtResource("8_b3pw8")]
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="DeathMenu" parent="CanvasLayer2" instance=ExtResource("9_hdqo6")]
-offset_left = -1.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = 1.0
 
 [node name="CanvasLayer4" type="CanvasLayer" parent="."]
 
@@ -1007,15 +1129,19 @@ script = ExtResource("20_y0tnd")
 position = Vector2(43.25, -20)
 shape = SubResource("RectangleShape2D_2pufs")
 
-[node name="FinalText" type="Label" parent="ArrivalTrigger"]
+[node name="CanvasLayer" type="CanvasLayer" parent="ArrivalTrigger"]
+
+[node name="FinalText" type="Label" parent="ArrivalTrigger/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
-offset_left = -104.0
-offset_top = -151.0
-offset_right = 161.0
-offset_bottom = -131.0
+offset_left = 462.0
+offset_top = 264.0
+offset_right = 727.0
+offset_bottom = 293.0
 theme_override_fonts/font = ExtResource("12_hv36d")
 theme_override_font_sizes/font_size = 25
 text = "I've made it, I see the base!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SniperZone" type="Area2D" parent="."]
 collision_layer = 0
@@ -1023,7 +1149,7 @@ collision_mask = 2
 script = ExtResource("21_0k133")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SniperZone"]
-position = Vector2(7540, -208.75)
+position = Vector2(7472, -208.75)
 shape = SubResource("RectangleShape2D_7wly3")
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="SniperZone"]
@@ -1032,31 +1158,48 @@ stream = ExtResource("22_e5eow")
 [node name="CanvasLayer" type="CanvasLayer" parent="SniperZone"]
 
 [node name="ColorRect" type="ColorRect" parent="SniperZone/CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
 visibility_layer = 512
+material = SubResource("ShaderMaterial_7wly3")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.429622, 0, 0, 1)
+color = Color(0.43, 0, 0, 0)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SniperZone/CanvasLayer"]
+[node name="QuoteText" type="RichTextLabel" parent="SniperZone/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("12_hv36d")
-theme_override_font_sizes/bold_italics_font_size = 25
+theme_override_font_sizes/normal_font_size = 32
 text = "You are closest to the goal when you are in greatest danger."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SniperZone/CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_plrwt")
+}
+
+[node name="FinalSound" type="AudioStreamPlayer" parent="SniperZone"]
+stream = ExtResource("24_plrwt")
+
+[node name="American_Flag" parent="." instance=ExtResource("24_7wly3")]
+position = Vector2(8083, -244)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="DeathMenu" parent="CanvasLayer2" instance=ExtResource("9_hdqo6")]
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = 1.0
 
 [connection signal="body_entered" from="SniperZone" to="SniperZone" method="_on_body_entered"]

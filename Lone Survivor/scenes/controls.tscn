@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv0avb84513cj"]
+[gd_scene load_steps=5 format=3 uid="uid://cv0avb84513cj"]
 
 [ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="1_5tddo"]
 [ext_resource type="Script" uid="uid://dyrktvcb27qxk" path="res://scripts/controls.gd" id="1_cywyo"]
 [ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="1_i2gav"]
+[ext_resource type="AudioStream" uid="uid://ce8w4xpt6s44g" path="res://sounds/main_menu_sound.mp3" id="4_ihl6s"]
 
 [node name="ControlMenu" type="Control"]
 layout_mode = 3
@@ -85,5 +86,9 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_i2gav")
 theme_override_font_sizes/font_size = 100
 text = "BACK TO MENU"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ihl6s")
+autoplay = true
 
 [connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

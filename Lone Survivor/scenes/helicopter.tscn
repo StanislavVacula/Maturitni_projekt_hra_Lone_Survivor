@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://drwqujtq4v08q"]
 
 [ext_resource type="Texture2D" uid="uid://d1aqn65ndde7" path="res://assets/fallen_helicopter.png" id="1_4loa8"]
-[ext_resource type="Script" uid="uid://b2c2hp8kv7qvj" path="res://scenes/helicopter.gd" id="1_wncid"]
+[ext_resource type="Script" uid="uid://b2c2hp8kv7qvj" path="res://scripts/helicopter.gd" id="1_wncid"]
 [ext_resource type="FontFile" uid="uid://cgiofxek16awx" path="res://assets/fonts/ByteBounce.ttf" id="2_xmuea"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmuea"]
