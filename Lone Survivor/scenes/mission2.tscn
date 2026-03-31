@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://s1exvqsr4rtr" path="res://scripts/camera_2d.gd" id="3_wix3p"]
 [ext_resource type="PackedScene" uid="uid://chkus4xclycai" path="res://scenes/enemy.tscn" id="5_l1f0f"]
 [ext_resource type="Texture2D" uid="uid://bpeuujkl34nn" path="res://assets/background.png" id="5_u1jdg"]
-[ext_resource type="Texture2D" uid="uid://dnjm0hp680fle" path="res://assets/TileSet/Nature_environment_01.png" id="6_43y5h"]
 [ext_resource type="Texture2D" uid="uid://mtdp7cdj30ee" path="res://assets/old_growth_tileset-export.png" id="7_jup4m"]
-[ext_resource type="Texture2D" uid="uid://ciyeib2wemx5o" path="res://assets/TileSet/Nature_props_01.png" id="8_qjbo1"]
+[ext_resource type="Texture2D" uid="uid://06l2kfyin2bi" path="res://assets/TileSet/grafika_pozadi.png" id="8_ki75t"]
+[ext_resource type="Texture2D" uid="uid://dnjm0hp680fle" path="res://assets/TileSet/Nature_environment_01.png" id="8_qjbo1"]
 [ext_resource type="PackedScene" uid="uid://mkk0cxr05j34" path="res://scenes/liana.tscn" id="12_xjdw8"]
 [ext_resource type="PackedScene" uid="uid://bpu3ed1xtao0c" path="res://scenes/pause_menu.tscn" id="13_dggll"]
 [ext_resource type="PackedScene" uid="uid://sy6o0ayibve3" path="res://scenes/lever.tscn" id="13_eeimi"]
@@ -25,7 +25,7 @@
 friction = 1.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
-texture = ExtResource("6_43y5h")
+texture = ExtResource("8_qjbo1")
 margins = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
@@ -64,7 +64,6 @@ texture_region_size = Vector2i(32, 32)
 19:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 20:0/0 = 0
 20:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-21:0/0 = 0
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 4:1/0 = 0
@@ -97,7 +96,6 @@ texture_region_size = Vector2i(32, 32)
 19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 20:1/0 = 0
 20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-21:1/0 = 0
 3:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
@@ -106,13 +104,9 @@ texture_region_size = Vector2i(32, 32)
 12:2/0 = 0
 13:2/0 = 0
 14:2/0 = 0
-15:2/0 = 0
-16:2/0 = 0
-17:2/0 = 0
 18:2/0 = 0
 19:2/0 = 0
 20:2/0 = 0
-21:2/0 = 0
 0:3/0 = 0
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:3/0 = 0
@@ -137,7 +131,6 @@ texture_region_size = Vector2i(32, 32)
 10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -0.31863, -16, 16, -16, 16, 16, -16, 16)
 11:3/0 = 0
 11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -0.31863, -16, 16, -16, 16, 16, -16, 16)
-12:3/0 = 0
 13:3/0 = 0
 13:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -10.5148, -1.91179, -16, 16, -16, 16, 16, -16, 16)
 15:3/0 = 0
@@ -148,7 +141,6 @@ texture_region_size = Vector2i(32, 32)
 17:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -11.7893, 0.955894, -16, 16, -10.5148, 16, 16, -16, 16)
 18:3/0 = 0
 18:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -11.7893, 0, -6.69125, 16, -1.59315, 16, 16, -16, 16)
-20:3/0 = 0
 21:3/0 = 0
 22:3/0 = 0
 23:3/0 = 0
@@ -333,8 +325,6 @@ texture_region_size = Vector2i(32, 32)
 3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 4:7/0 = 0
 4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-5:7/0 = 0
-5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:7/0 = 0
 6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 7:7/0 = 0
@@ -391,8 +381,6 @@ texture_region_size = Vector2i(32, 32)
 3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 4:8/0 = 0
 4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-5:8/0 = 0
-5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:8/0 = 0
 6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 7:8/0 = 0
@@ -449,23 +437,12 @@ texture_region_size = Vector2i(32, 32)
 3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 4:9/0 = 0
 4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-5:9/0 = 0
-5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:9/0 = 0
 6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 7:9/0 = 0
 7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 8:9/0 = 0
 8:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-9:9/0 = 0
-10:9/0 = 0
-11:9/0 = 0
-12:9/0 = 0
-13:9/0 = 0
-14:9/0 = 0
-15:9/0 = 0
-16:9/0 = 0
-17:9/0 = 0
 18:9/0 = 0
 19:9/0 = 0
 20:9/0 = 0
@@ -489,13 +466,11 @@ texture_region_size = Vector2i(32, 32)
 30:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 1.27452, -16, 16, -16, 16, 16, -16, 16)
 31:9/0 = 0
 31:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 1.27452, -16, 16, -16, 16, 16, -16, 16)
-32:9/0 = 0
 0:10/0 = 0
 1:10/0 = 0
 2:10/0 = 0
 3:10/0 = 0
 4:10/0 = 0
-5:10/0 = 0
 6:10/0 = 0
 7:10/0 = 0
 8:10/0 = 0
@@ -534,12 +509,17 @@ texture_region_size = Vector2i(32, 32)
 30:10/0 = 0
 31:10/0 = 0
 14:3/0 = 0
-32:10/0 = 0
 29:4/0 = 0
 30:4/0 = 0
 31:4/0 = 0
 32:4/0 = 0
 10:2/0 = 0
+19:3/0 = 0
+28:3/0 = 0
+5:7/0 = 0
+5:8/0 = 0
+5:10/0 = 0
+5:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wr8iv"]
 texture = ExtResource("7_jup4m")
@@ -610,8 +590,6 @@ texture_region_size = Vector2i(32, 32)
 2:4/0 = 0
 3:4/0 = 0
 4:4/0 = 0
-11:4/0 = 0
-12:4/0 = 0
 13:4/0 = 0
 0:5/0 = 0
 1:5/0 = 0
@@ -623,7 +601,6 @@ texture_region_size = Vector2i(32, 32)
 7:5/0 = 0
 8:5/0 = 0
 9:5/0 = 0
-10:5/0 = 0
 13:5/0 = 0
 14:5/0 = 0
 0:6/0 = 0
@@ -634,25 +611,10 @@ texture_region_size = Vector2i(32, 32)
 5:6/0 = 0
 6:6/0 = 0
 7:6/0 = 0
-8:6/0 = 0
-13:6/0 = 0
-14:6/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
-10:4/0 = 0
-9:4/0 = 0
 8:4/0 = 0
 7:4/0 = 0
 6:4/0 = 0
 5:4/0 = 0
-9:6/0 = 0
-10:6/0 = 0
-11:6/0 = 0
-12:6/0 = 0
-12:5/0 = 0
-11:5/0 = 0
 14:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lbhrr"]
@@ -662,60 +624,37 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_lbhrr")
 sources/0 = SubResource("TileSetAtlasSource_p57ef")
 sources/2 = SubResource("TileSetAtlasSource_wr8iv")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nlqja"]
-texture = ExtResource("8_qjbo1")
-1:1/size_in_atlas = Vector2i(3, 2)
-1:1/0 = 0
-1:4/size_in_atlas = Vector2i(3, 1)
-1:4/0 = 0
-4:4/0 = 0
-6:4/size_in_atlas = Vector2i(3, 1)
-6:4/0 = 0
-9:4/size_in_atlas = Vector2i(2, 1)
-9:4/0 = 0
-11:2/size_in_atlas = Vector2i(2, 3)
-11:2/0 = 0
-13:1/size_in_atlas = Vector2i(4, 4)
-13:1/0 = 0
-17:2/size_in_atlas = Vector2i(3, 3)
-17:2/0 = 0
-20:2/size_in_atlas = Vector2i(3, 3)
-20:2/0 = 0
-23:2/size_in_atlas = Vector2i(3, 3)
-23:2/0 = 0
-30:3/size_in_atlas = Vector2i(3, 2)
-30:3/0 = 0
-12:6/size_in_atlas = Vector2i(3, 3)
-12:6/0 = 0
-15:8/size_in_atlas = Vector2i(2, 1)
-15:8/0 = 0
-17:6/size_in_atlas = Vector2i(4, 3)
-17:6/0 = 0
-22:7/size_in_atlas = Vector2i(3, 2)
-22:7/0 = 0
-25:7/size_in_atlas = Vector2i(2, 2)
-25:7/0 = 0
-28:8/size_in_atlas = Vector2i(2, 1)
-28:8/0 = 0
-30:7/size_in_atlas = Vector2i(2, 2)
-30:7/0 = 0
-32:7/size_in_atlas = Vector2i(4, 2)
-32:7/0 = 0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_up81i"]
+texture = ExtResource("8_ki75t")
 1:15/size_in_atlas = Vector2i(3, 2)
 1:15/0 = 0
 4:14/size_in_atlas = Vector2i(3, 4)
 4:14/0 = 0
-25:12/size_in_atlas = Vector2i(4, 2)
-25:12/0 = 0
+1:7/size_in_atlas = Vector2i(3, 2)
+1:7/0 = 0
 4:6/size_in_atlas = Vector2i(2, 3)
 4:6/0 = 0
 6:7/size_in_atlas = Vector2i(3, 2)
 6:7/0 = 0
-9:6/size_in_atlas = Vector2i(3, 3)
-9:6/0 = 0
+9:7/size_in_atlas = Vector2i(3, 2)
+9:7/0 = 0
+12:6/size_in_atlas = Vector2i(4, 3)
+12:6/0 = 0
+17:6/size_in_atlas = Vector2i(4, 3)
+17:6/0 = 0
+22:7/size_in_atlas = Vector2i(3, 2)
+22:7/0 = 0
+25:7/size_in_atlas = Vector2i(3, 2)
+25:7/0 = 0
+28:7/size_in_atlas = Vector2i(2, 2)
+28:7/0 = 0
+30:7/size_in_atlas = Vector2i(3, 2)
+30:7/0 = 0
+33:7/size_in_atlas = Vector2i(3, 2)
+33:7/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_0epgs"]
-sources/0 = SubResource("TileSetAtlasSource_nlqja")
+sources/1 = SubResource("TileSetAtlasSource_up81i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvm3s"]
 size = Vector2(172, 168)
@@ -736,10 +675,10 @@ motion_scale = Vector2(0.5, 0.5)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_left = -995.0
-offset_top = -488.0
+offset_top = -604.0
 offset_right = 14005.0
-offset_bottom = 536.0
-scale = Vector2(1, 1.3)
+offset_bottom = 420.0
+scale = Vector2(1, 1.7)
 texture = ExtResource("5_u1jdg")
 stretch_mode = 1
 
@@ -775,7 +714,7 @@ layer_0/tile_data = PackedInt32Array(65524, 262144, 6, 65525, 262144, 6, 65526, 
 z_index = -1
 tile_set = SubResource("TileSet_0epgs")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65566, 786432, 6, -65577, 1114112, 6, -65591, 1114112, 6, -65558, 589824, 6, -65586, 589824, 6, -130904, 262144, 14, -130902, 589824, 6, -130886, 1114112, 6, -130870, 1114112, 6, -130868, 393216, 7, -130900, 393216, 7, -130906, 393216, 7, -130853, 393216, 7, -65310, 393216, 7, -130846, 393216, 7, -130860, 589824, 6, -130834, 1441792, 7, -130824, 1966080, 7, -131029, 589824, 6, -131020, 589824, 6, -130989, 786432, 6, -131036, 786432, 6, -131003, 1114112, 6, -131032, 262144, 14, -65543, 262144, 14, -458445, 786432, 6, -523957, 786432, 6, -523943, 1114112, 6, -524001, 262144, 14, -523999, 393216, 7, -524004, 393216, 7, -523993, 589824, 6, -523971, 589824, 6, -458438, 1966080, 3)
+layer_0/tile_data = PackedInt32Array(-65566, 393217, 7, -65577, 589825, 7, -65591, 393217, 7, -65558, 1114113, 6, -65586, 786433, 6, -130904, 786433, 6, -130902, 589825, 7, -130886, 786433, 6, -130870, 786433, 6, -130868, 589825, 7, -130900, 262145, 14, -130906, 1114113, 6, -130853, 393217, 7, -130846, 786433, 6, -130860, 1114113, 6, -130834, 1114113, 6, -130824, 1114113, 6, -131029, 1114113, 6, -131020, 589825, 7, -130989, 393217, 7, -131036, 393217, 7, -131003, 786433, 6, -131032, 786433, 6, -65543, 262145, 14, -458445, 1966081, 7, -523957, 393217, 7, -523943, 393217, 7, -524001, 1114113, 6, -523999, 786433, 6, -524004, 1441793, 7, -523993, 589825, 7, -523971, 1114113, 6, -130799, 1114113, 6, -523977, 1114113, 6)
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -805,16 +744,16 @@ process_mode = 3
 [node name="WinMenu" parent="CanvasLayer5" instance=ExtResource("21_lstt4")]
 
 [node name="LianaPlatform" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(161, -28)
+position = Vector2(159, -26)
 
 [node name="LianaPlatform2" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(49, -1)
+position = Vector2(46, -1)
 
 [node name="LianaPlatform4" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(267, -59)
+position = Vector2(265, -52)
 
 [node name="LianaPlatform3" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(413, -3)
+position = Vector2(408, -3)
 
 [node name="LianaPlatform5" parent="." instance=ExtResource("12_xjdw8")]
 position = Vector2(178, -108)

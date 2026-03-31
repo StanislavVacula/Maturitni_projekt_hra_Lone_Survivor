@@ -43,6 +43,14 @@ theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 100
 text = "CONTROLS"
 
+[node name="LevelsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 100
+text = "LEVELS"
+
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -56,3 +64,4 @@ stream = ExtResource("4_wu84c")
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
