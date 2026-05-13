@@ -1,5 +1,9 @@
 extends Control
 
+@onready var resume_button = $PanelContainer/VBoxContainer/ResumeButton 
+@onready var restart_button = $PanelContainer/VBoxContainer/RestartButton
+@onready var quit_button = $PanelContainer/VBoxContainer/QuitButton
+
 func _ready():
 	hide()
 	$AnimationPlayer.play("RESET")
@@ -17,6 +21,7 @@ func pause():
 	show()
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
+	resume_button.grab_focus()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

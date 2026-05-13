@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED := 100.0          
-const JUMP_VELOCITY := -350.0
+const JUMP_VELOCITY := -390
 const ATTACK_COOLDOWN := 0.5 
 
 var health := 5 

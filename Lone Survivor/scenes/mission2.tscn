@@ -742,6 +742,7 @@ offset_bottom = 50.0
 process_mode = 3
 
 [node name="WinMenu" parent="CanvasLayer5" instance=ExtResource("21_lstt4")]
+next_mission_path = "res://scenes/diary_screen_3.tscn"
 
 [node name="LianaPlatform" parent="." instance=ExtResource("12_xjdw8")]
 position = Vector2(159, -26)
@@ -801,16 +802,16 @@ position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_3jk3a")
 
 [node name="LianaPlatform7" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1614, 4)
+position = Vector2(1609, 4)
 
 [node name="LianaPlatform8" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1731, -25)
+position = Vector2(1723, -18)
 
 [node name="LianaPlatform9" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1834, -57)
+position = Vector2(1829, -54)
 
 [node name="LianaPlatform10" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1752, -103)
+position = Vector2(1745, -102)
 
 [node name="LianaPlatform11" parent="." instance=ExtResource("12_xjdw8")]
 position = Vector2(1841, -144)
@@ -825,22 +826,22 @@ position = Vector2(1639, -209)
 position = Vector2(1640, -228)
 
 [node name="LianaPlatform14" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(1954, -28)
+position = Vector2(1952, -28)
 
 [node name="LianaPlatform15" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2074, -7)
+position = Vector2(2071, -7)
 
 [node name="LianaPlatform16" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2187, -38)
+position = Vector2(2184, -34)
 
 [node name="LianaPlatform17" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2302, 6)
+position = Vector2(2299, 6)
 
 [node name="LianaPlatform18" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2405, -21)
+position = Vector2(2403, -21)
 
 [node name="LianaPlatform19" parent="." instance=ExtResource("12_xjdw8")]
-position = Vector2(2524, -16)
+position = Vector2(2524, -12)
 
 [node name="Enemy2" parent="." instance=ExtResource("5_l1f0f")]
 position = Vector2(3188, -44)

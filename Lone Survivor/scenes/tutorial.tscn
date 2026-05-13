@@ -801,20 +801,20 @@ offset_right = 132.0
 offset_bottom = 50.0
 
 [node name="LianaPlatform8" parent="." instance=ExtResource("12_tbcdj")]
-position = Vector2(1704, 95)
+position = Vector2(1711, 98)
 
 [node name="water_hazard" parent="." instance=ExtResource("15_wr8iv")]
 position = Vector2(1648, 176)
 scale = Vector2(4, 1)
 
 [node name="LianaPlatform7" parent="." instance=ExtResource("12_tbcdj")]
-position = Vector2(1811, 86)
+position = Vector2(1815, 90)
 
 [node name="LianaPlatform6" parent="." instance=ExtResource("12_tbcdj")]
-position = Vector2(1609, 118)
+position = Vector2(1614, 118)
 
 [node name="MedKit" parent="." instance=ExtResource("19_ikfo1")]
-position = Vector2(1705, 70)
+position = Vector2(1714, 79)
 
 [node name="Flag" parent="." instance=ExtResource("20_dwom6")]
 position = Vector2(2114, 89)
@@ -824,3 +824,4 @@ next_level_path = "res://scenes/diary_screen_2"
 process_mode = 3
 
 [node name="WinMenu" parent="CanvasLayer5" instance=ExtResource("21_bl2xa")]
+next_mission_path = "res://scenes/diary_screen_2.tscn"

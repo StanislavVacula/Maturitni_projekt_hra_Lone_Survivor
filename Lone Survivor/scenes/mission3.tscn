@@ -743,6 +743,7 @@ offset_bottom = 50.0
 process_mode = 3
 
 [node name="WinMenu" parent="CanvasLayer5" instance=ExtResource("12_t2tpn")]
+next_mission_path = "res://scenes/diary_screen_4.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

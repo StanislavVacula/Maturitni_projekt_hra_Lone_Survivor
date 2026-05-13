@@ -1,6 +1,7 @@
 extends Control
 
 @onready var death_sound = $DeathSound
+@onready var restart_button = $PanelContainer/VBoxContainer/RestartButton 
 
 func _ready():
 	hide()
@@ -15,6 +16,7 @@ func show_death():
 	
 	await get_tree().create_timer(1.2).timeout
 	get_tree().paused = true
+	restart_button.grab_focus()
 
 func _on_restart_button_pressed():
 	get_tree().paused = false 
